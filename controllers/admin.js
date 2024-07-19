@@ -4,6 +4,7 @@ const { isAdmin } = require("../middleware"); // Ensure you have this middleware
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Internship  = require('../models/intership');
+const User  = require('../models/user');
 
 
 module.exports.adminlogin = (req, res) => {
@@ -80,7 +81,117 @@ module.exports.createIntership = async (req, res) => {
         res.redirect("/admin/dashboard");
     } catch (error) {
         req.flash("error", "Internship Not Created");
-        console.log(`Error: ${error}`);
         res.redirect("/admin/dashboard");
+    }
+};
+
+
+
+
+module.exports.allStudents = async (req, res) => {
+    try {
+        const students = await User.find({});
+
+        const paidStudents = students.filter(student => student.paymentHistory && student.paymentHistory.length > 0);
+        const unpaidStudents = students.filter(student => !student.paymentHistory || student.paymentHistory.length === 0);
+
+        res.render('admin/student', { paidStudents, unpaidStudents });
+    } catch (error) {
+        // Handle error and redirect with a flash message
+        req.flash("error", "An error occurred while fetching student data.");
+        res.redirect("/admin/dashboard");
+    }
+};
+
+
+module.exports.allInternship = async (req, res) => {
+    try {
+
+        const internships = await Internship.find({});
+        res.render('admin/allintership', { internships });
+    } catch (error) {
+        req.flash("error", error);
+        res.status(500).send('Internal Server Error');
+        res.redirect("/admin/dashboard");
+    }
+};
+
+
+module.exports.editInternship = async (req, res) => {
+    let { id } = req.params;
+    try {
+        const internship = await Internship.findById(id);
+        
+        if (!internship) {
+            req.flash("error", "Internship not found");
+            return res.redirect("/admin/internships");
+        }
+        res.render('admin/editInternship', { internship });
+    } catch (error) {
+        req.flash("error", error.message);
+        res.status(500).send('Internal Server Error');
+        res.redirect("/admin/dashboard");
+    }
+};
+
+module.exports.editedtheinter = async (req, res) => {
+    let { id } = req.params;
+    try {
+        const internship = await Internship.findById(id);
+        
+        if (!internship) {
+            req.flash("error", "Internship not found");
+            return res.redirect("/admin/internships");
+        }
+
+        internship.internshipname = req.body.internshipname;
+        internship.numberofusersbuy = req.body.numberofusersbuy;
+        internship.price = req.body.price;
+        internship.internshipdescription = req.body.internshipdescription;
+        internship.internshipdetails = req.body.internshipdetails;
+        internship.picture = req.body.picture;
+        
+        internship.tasks = req.body.taskname.map((name, index) => ({
+            name,
+            linkt: req.body.tasklink[index] || ''
+        }));
+
+        await internship.save();
+
+        req.flash("success", "Internship updated successfully");
+        res.redirect("/admin/internship");
+    } catch (error) {
+        req.flash("error", error.message);
+        res.status(500).send('Internal Server Error');
+        res.redirect("/admin/internship");
+    }
+};
+
+
+
+module.exports.deleteInternship = async (req, res) => {
+    let { id } = req.params;
+    try {
+        // Ensure the ID is valid
+        if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+            req.flash("error", "Invalid Internship ID");
+            return res.redirect("/admin/internship");
+        }
+
+        // Attempt to find and remove the internship
+        const internship = await Internship.findByIdAndDelete(id);
+
+        if (!internship) {
+            req.flash("error", "Internship not found");
+            return res.redirect("/admin/internship");
+        }
+
+        req.flash("success", "Internship deleted successfully");
+        res.redirect("/admin/internship");
+    } catch (error) {
+        console.error("Error deleting internship:", error); // Log the error details
+        req.flash("error", "Internal Server Error");
+        res.status(500).send('Internal Server Error');
+        res.redirect("/admin/internship");
     }
 };
