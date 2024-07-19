@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placcademy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="icon" type="image/x-icon" href="/src/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .containermian {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <%- include("../includes/flash.ejs") %>
+  
+  <%- include("../includes/navbar.ejs") %>
+
+  <div class="containermian">
+    <%- body %>
+  </div>
+
+  <%- include("../includes/footer.ejs") %>
+  
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/js/autocomplete.js"></script>
+  <script>function toggleAnswer(element) {
+    const answer = element.nextElementSibling;
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+    } else {
+        answer.style.display = "block";
+    }
+}
+
+
+let roundanimationcircle = document.querySelector(".round-animation-circle");
+
+function getRandomValue(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateRandomValue() {
+  const randomValueLeft = getRandomValue(40, 60);
+  const randomValueTop = getRandomValue(40, 60);
+  roundanimationcircle.style.left = randomValueLeft + '%';
+  roundanimationcircle.style.top = randomValueTop + '%';
+}
+
+setInterval(updateRandomValue, 1000);
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,583 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+.notification-bar{
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.referral-btn-box{
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5vw;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.referral-btn-box:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.referral-btn-box img{
+    width: 70%;
+    height: 70%;
+}
+.notitfication-btn{
+    cursor: pointer;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #992F04;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10vw;
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+.notitfication-btn:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.notifi-count{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #039B13;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    top: 0;
+    right: -10%;
+    position:absolute;
+}
+.notitfication-btn img{
+    width: 2rem;
+    height: 2rem;
+}
+.profile-box{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding-bottom: 5rem;
+}
+.user-p-info{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.inership-info{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aquamarine; */
+}
+.profile-dp{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background-color: maroon;
+    border: 2px solid black;
+    margin-left: 5rem;
+}
+.profile-dp img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-info-area{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.profile-info-area h1{
+    font-size: 3rem;
+    font-weight: 500;
+    margin-left: 3rem;
+    margin-top: 2.5rem;
+}
+.profile-info-area p{
+ width: 20rem;
+ height: auto;
+ font-size: 1.3rem;
+ margin-left: 3rem;
+ margin-top: 1rem;
+ text-align: justify;
+ text-align: start;
+}
+.profile-info-area button{
+    background-color: #FD682C;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 0.4rem;
+    margin-left: 3rem;
+    margin-top: 1.5rem;
+}
+.profile-links{
+    margin-top: 1.3rem;
+}
+#profile-links-ul{
+  width: 10rem;
+  display: flex;
+  margin-left: 3rem;
+  align-items: center;
+  justify-content: start;
+}
+
+#profile-links-ul a{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.5rem;
+   cursor: pointer;
+   margin-top: 0.5rem;
+}
+.profile-links-img{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.inership-info-panel{
+    margin-top: 3rem;
+    width: 48vw;
+    height: 30rem;
+    border: 1.5px solid black;
+    border-radius: 20px;
+    background-color: #FFE1D4;
+}
+.notification-pannel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    background-color: #992F04;
+    display: none;
+    top: 7%;
+    overflow-y: scroll;
+   
+   
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+    gap: 2rem;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #9f9f9f;
+}
+
+.notifications {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10rem;
+}
+
+.notification {
+    background-color: #ff8c66;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.notification img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.notification p {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.badge {
+    background-color: green;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-right: 1.5rem;
+}
+
+.time {
+    font-size: 0.8em;
+    color: #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.inership-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.score {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.score div {
+    font-size: 24px;
+    color: #333;
+}
+
+.task-list {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+}
+
+.task-list h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #FFA500;
+    text-align: center;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.task-item button {
+    background-color: #FFA500;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task-item button:hover {
+    background-color: #cc8400;
+}
+
+.progress-bar {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #444;
+    margin: 10px 0;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 5px;
+    background-color: #32CD32;
+    width: 70%; /* Change this percentage to update progress */
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.submit-container button {
+    background-color: #FB4B04;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-container button:hover {
+    background-color: #e04303;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .header h2 {
+        font-size: 20px;
+    }
+
+    .score div {
+        font-size: 20px;
+    }
+
+    .task-item button {
+        padding: 5px;
+    }
+}
+
+
+
+
+
+.inership-info-panel{
+    margin-top: 3rem;
+    width: 48vw;
+    height: auto;
+    padding-bottom: 1.5rem;
+    border: 1.5px solid black;
+    border-radius: 20px;
+    background-color: #FFE1D4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.header {
+    text-align: center;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+}
+
+.score {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.score div {
+    font-size: 24px;
+    color: #333;
+}
+
+.task-list {
+    width: 95%;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.task-list h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.task-item button {
+    background-color: #ff520e;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task-item button:hover {
+    background-color: #cc0000;
+}
+
+.progress-bar {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #444;
+    margin: 10px 0;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 5px;
+    background-color: #32CD32;
+    width: 70%; /* Change this percentage to update progress */
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.submit-container button {
+    background-color: #FB4B04;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-container button:hover {
+    background-color: #e04303;
+}
+
+
+
+
+
+
+
+
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 615px) {
+    .profile-box{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-p-info{
+        width: 100%;
+        align-items: center;
+    }
+    
+    .inership-info{
+        /* background-color: #039B13; */
+    }
+
+    .profile-dp{
+        margin-left: 0;
+        width: 8rem;
+        height: 8rem;
+        
+    }
+    .profile-info-area{
+        align-items: center;
+    }
+    .profile-info-area h1{
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .profile-info-area p{
+     width: 18rem;
+     font-size: 1.1rem;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 1rem;
+     text-align: justify;
+     text-align: center;
+    }
+    .profile-info-area button{
+ font-size: 1.3rem;
+ margin-left: auto;
+ margin-right: auto;
+    }
+
+    #profile-links-ul{
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .referral-btn-box{
+        height: 2rem;
+        width: 2rem;
+       margin-right: 1rem;
+    }
+
+    .notitfication-btn{
+        width: 3rem;
+        height: 3rem;
+    }
+    .inership-info-panel{
+        margin-top: 3rem;
+        width: 18rem;
+        height: auto;
+        border: 1.5px solid black;
+        border-radius: 20px;
+        background-color: #FFE1D4;
+        margin-right: auto;
+    }
+    
+    .notification-pannel{
+        top: 10%;
+    }
+
+
+    
+
+
+}
+
+@media (min-width: 350px) {
+    .inership-info-panel{
+        margin-right: 1.5rem;
+    }
+}

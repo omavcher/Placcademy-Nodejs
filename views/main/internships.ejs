@@ -1,0 +1,163 @@
+<%= layout("/layouts/boilerplate") %>
+<style>
+/* Main container */
+.interposter {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column; /* Stack rows vertically */
+  background-color: #f9b79d;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Container for text information */
+.test-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Title styling */
+.test-info h1 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #2e2e2e;
+  margin-bottom: 1rem; /* Increased margin for spacing */
+}
+
+/* Grid container for cards */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap; /* Wrap cards to new rows */
+  gap: 1rem; /* Gap between cards */
+  overflow: hidden;
+  justify-content: center;
+}
+
+/* Individual card styling */
+#registration-date-div {
+  width: 150px; /* Fixed width for square card */
+  height: 150px; /* Fixed height for square card */
+  position: relative; /* Positioning context for absolute children */
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Different background images for each card */
+.card1 { background-image: url("/src/models_pics/10poster.webp"); }
+.card2 { background-image: url("/src/models_pics/9poster.webp"); }
+.card3 { background-image: url("/src/models_pics/8poster.webp"); }
+.card4 { background-image: url("/src/models_pics/7poster.webp"); }
+
+/* Hover effect for cards */
+#registration-date-div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Content styling inside card */
+#registration-date-div-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border-radius: 8px;
+  padding: 0.5rem; /* Reduced padding for smaller content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text inside card */
+}
+
+/* Card title styling */
+#registration-date-div h3 {
+  font-size: 1.2rem; /* Adjusted font size */
+  color: #333;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Card text styling */
+#registration-date-div p {
+  font-size: 1rem; /* Adjusted font size */
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+}
+
+/* Poster image styling */
+.poster-test {
+  width: 40%;
+  height: 100%;
+  background-image: url("/src/models_pics/10poster.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+}
+
+/* Responsive design adjustments */
+@media only screen and (max-device-width: 480px) {
+  #registration-date-div {
+    width: 100%; /* Full width for smaller screens */
+    height: auto; /* Adjust height for responsive design */
+  }
+
+  .test-info {
+    padding: 0.5rem;
+  }
+
+  #registration-date-div {
+    padding: 0.5rem;
+  }
+}
+</style>
+
+<div class="interposter">
+  <div class="test-info">
+    <h1>Important Dates</h1>
+
+    <div class="card-grid">
+      <div id="registration-date-div" class="card1">
+        <div id="registration-date-div-content">
+          <h3>Registration Start Date</h3>
+          <p>1 July 2024</p>
+        </div>
+      </div>
+
+      <div id="registration-date-div" class="card2">
+        <div id="registration-date-div-content">
+          <h3>Registration END SOON..</h3>
+          <p>Internship for only first 10,000</p>
+        </div>
+      </div>
+
+      <div id="registration-date-div" class="card3">
+        <div id="registration-date-div-content">
+          <h3>Entrance Exam Date</h3>
+          <p>19 July 2024</p>
+        </div>
+      </div>
+
+      <div id="registration-date-div" class="card4">
+        <div id="registration-date-div-content">
+          <h3>Internship Allotment</h3>
+          <p>22 July 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="poster-test"></div>
+</div>

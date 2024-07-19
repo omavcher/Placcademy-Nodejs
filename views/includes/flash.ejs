@@ -1,0 +1,63 @@
+<style>
+    .msg-n-box {
+        width: 100%;
+        height: 2rem;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: aqua; /* Added to visually distinguish the box */
+    }
+
+    #success-msg {
+        width: 80%; 
+        height: 100%;
+        color: white; 
+        box-sizing: border-box; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #success-msg h1 {
+        margin: 0;
+    }
+
+    button {
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+    }
+</style>
+
+
+<% if (success && success.length) { %>
+<div style="background-color: #00a113;" class="msg-n-box">
+    <div id="success-msg">
+        <h1><%= success %></h1>
+    </div>
+    <button class="close-btn">X</button>
+</div>
+<% } else if (error && error.length) { %>
+    <div style="background-color: #ff0b02;" class="msg-n-box">
+        <div id="success-msg">
+            <h1>  gggg      <%= error %></h1>
+        </div>
+        <button class="close-btn">X</button>
+    </div>
+    <% } %>
+
+
+    
+
+
+<script>
+    const msgbox = document.querySelector('.msg-n-box');
+    const closebtnmsg = document.querySelector(".close-btn");
+
+    closebtnmsg.addEventListener("click", () => {
+        msgbox.style.display = "none";
+    });
+</script>

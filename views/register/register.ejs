@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Placcademy</title>
+    <link rel="icon" type="image/x-icon" href="/src/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: "Fira Sans Extra Condensed", sans-serif !important;
+		background: linear-gradient(to bottom, #D9D9D9, #D9D9D9, #D9D9D9);
+    }
+    .main {
+        width: 90%;
+        max-width: 25rem;
+        height: 31rem;
+        overflow: hidden;
+        background-color: #FB4B04;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #chk {
+        display: none;
+    }
+    .signup {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    label {
+        color: #fff;
+        font-size: 2.3em;
+        justify-content: center;
+        display: flex;
+        margin: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+    }
+    input {
+        width: 80%;
+        height: 10px;
+        background: #e0dede;
+        justify-content: center;
+        display: flex;
+        margin: 20px auto;
+        padding: 12px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    button {
+        width: 80%;
+        height: 40px;
+        margin: 10px auto;
+        justify-content: center;
+        display: block;
+        color: #fff;
+        background: #FB4B04;
+        font-size: 1em;
+        font-weight: bold;
+        margin-top: 5px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        transition: .2s ease-in;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #c44103;
+    }
+    .login {
+        height: 460px;
+        background: #eee;
+        border-radius: 60% / 10%;
+        transform: translateY(-180px);
+        transition: .8s ease-in-out;
+    }
+    .login label {
+        color: #FB4B04;
+        transform: scale(.6);
+    }
+
+    #chk:checked ~ .login {
+        transform: translateY(-500px);
+    }
+    #chk:checked ~ .login label {
+        transform: scale(1);	
+    }
+    #chk:checked ~ .signup label {
+        transform: scale(.6);
+    }
+
+	.aut-restab{
+		width: 80%;
+		height: 1.8rem;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+	}
+    .googleautdiv{
+        height: 95%;
+        border-radius: 50%;
+        
+    }
+   
+
+     .googleautdiv img{
+        height: 100%;
+     } 
+
+
+	@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+	.main {
+			scale: 2.2;
+
+
+        }
+}
+
+
+    @media (max-width: 600px) {
+       
+        .signup, .login {
+            padding: 0 1rem;
+        }
+        label {
+            font-size: 2em;
+            margin: 40px 0;
+        }
+        input, button {
+            width: 90%;
+        }
+        .login {
+            height: 520px;
+            transform: translateY(-210px);
+        }
+        #chk:checked ~ .login {
+            transform: translateY(-560px);
+        }
+    }
+    </style>
+</head>
+<body>
+	<div class="main">  	
+
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form action="/signup" method="POST">
+					<label for="chk" aria-hidden="true">Sign up</label>
+                    <input type="text" name="username" placeholder="username" required>
+					<input type="email" name="email" placeholder="Email" required>
+					<input type="password" name="password" placeholder="Password" required>
+
+					<div class="aut-restab">
+           <div class="googleautdiv"><a href="/auth/google"><img src="/src/icons/google.png" alt="google"></a> </div>
+					</div>
+
+                    <div class="aut-restab"><%= error %></div>
+
+					<button type="submit">Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="/login" method="POST">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="text" name="username" placeholder="Username" required>
+					<input type="password" name="password" placeholder="Password" required>
+                   
+					<button type="submit">Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>
