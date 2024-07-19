@@ -20,6 +20,7 @@ const ExpressError = require("./utils/ExpressError");
 const mainRoutes = require("./routes/homeRoutes");
 const internshipRoutes = require("./routes/internships");
 const profileRoutes = require("./routes/profile");
+const adminRoutes = require("./routes/admin");
 
 
 const app = express();
@@ -82,7 +83,7 @@ app.use((req, res, next) => {
 app.use("/", mainRoutes);
 app.use("/internships", internshipRoutes);
 app.use("/profile", profileRoutes);
-
+app.use("/admin",adminRoutes)
 
 
 // 404 Error handler

@@ -1,29 +1,26 @@
 const availablekeywords = [
-    "Html",
-    "csS",
-    "Full Stack (MEARN) Web Development",
-    "Full Stack BackEnd",
-    "Frontend",Payton
-    Web Development
-    Mobile App Development
-    Data Science
-    Artificial Intelligence
-    Machine Learning
-    Cybersecurity
-    Network Engineering
-    Cloud Computing
-    Blockchain Technology
-    Internet of Things (IoT)
-    C (DSA)
-    UI UX
-    Front End
-    Pharmacy
-    Civil Engineering (Structural Design Software)
-    Finance
-    Human Resources
-    Java + DSA
-    Renewable Energy (Design & Simulation)
+    "Payton",
+    "Web Development",
+    "Mobile App Development",
+    "Data Science",
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Cybersecurity",
+    "Network Engineering",
+    "Cloud Computing",
+    "Blockchain Technology",
+    "Internet of Things (IoT)",
+    "C (DSA)",
+    "UI UX",
+    "Front End",
+    "Pharmacy",
+    "Civil Engineering (Structural Design Software)",
+    "Finance",
+    "Human Resources",
+    "Java + DSA",
+    "Renewable Energy (Design & Simulation)"
 ];
+
 
 const search_results = document.querySelector(".search-results");
 const search_input = document.getElementById("search-input");

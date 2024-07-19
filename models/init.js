@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Internship = require('./models/InterSchema'); // Adjust the path as per your project structure
+const Internship = require('./models/InterSchema');
 
 
-const exampleData = [
+const exampleData = 
     {
         intershipname: 'Example Internship 1',
         numberofusersbuy: 100,
@@ -11,25 +11,19 @@ const exampleData = [
         intershipdetails: 'Detailed information about the example internship.',
         picture: 'https://example.com/internship1.jpg',
         tasks: [
-            { name: 'Task 1', like: true },
-            { name: 'Task 2', like: false },
-            { name: 'Task 3', like: true }
-        ]
-    },
-    {
-        intershipname: 'Example Internship 2',
-        numberofusersbuy: 50,
-        prise: 299,
-        intershipdiscripction: 'Another example internship description.',
-        intershipdetails: 'Details about the second example internship.',
-        picture: 'https://example.com/internship2.jpg',
-        tasks: [
-            { name: 'Task A', like: false },
-            { name: 'Task B', like: true },
-            { name: 'Task C', like: true }
+            { name: 'Task 1', link: '' },
+            { name: 'Task 2', link: '' },
+            { name: 'Task 3', link: '' },
+            { name: 'Task 4', link: '' },
+            { name: 'Task 5', link: '' },
+            { name: 'Task 6', link: '' },
+            { name: 'Task 7', link: '' },
+            { name: 'Task 8', link: '' },
+            { name: 'Task 9', link: '' },
+            { name: 'Task 10', link: '' },     
         ]
     }
-];
+
 
 // Function to insert example data
 async function insertExampleData() {
@@ -41,9 +35,7 @@ async function insertExampleData() {
         console.log('Example data inserted successfully.');
     } catch (error) {
         console.error('Error inserting example data:', error);
-    } finally {
-        mongoose.disconnect();
-    }
+    } 
 }
 
 insertExampleData();

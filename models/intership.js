@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const InterSchema = new Schema({
-    intershipname: {
+    internshipname: {
         type: String,
         required: true
     },
@@ -10,15 +10,15 @@ const InterSchema = new Schema({
         type: Number,
         required: true
     },
-    price : {
+    price: {
         type: Number,
         required: true
     },
-    intershipdiscripction: {
+    internshipdescription: { // Ensure this matches the form field name
         type: String,
         required: true
     },
-    intershipdetails: {
+    internshipdetails: {
         type: String,
         required: true
     },
@@ -31,9 +31,9 @@ const InterSchema = new Schema({
             type: String,
             required: true
         },
-        linkt: {
+        linkt: { // Ensure this matches the form field name
             type: String,
-            default: false
+            default: ''
         }
     }]
 });

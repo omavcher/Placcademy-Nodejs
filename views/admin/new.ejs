@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling on the body */
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            overflow-y: auto; /* Enable vertical scrolling if content overflows */
+            height: 100vh; /* Ensure the container fits the viewport height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            text-align: center;
+            color: #FB4B04;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button[type="submit"],
+        button[type="button"] {
+            background-color: #FB4B04;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button[type="button"] {
+            background-color: #ddd;
+            color: black;
+            font-size: 14px;
+        }
+
+        button[type="button"]:hover,
+        button[type="submit"]:hover {
+            opacity: 0.9;
+        }
+
+        .task {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .task {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Internship</h2>
+        <form action="/admin/intership/new" method="POST" id="internship-form">
+            <div class="form-group">
+                <label for="internship-name">Internship Name:</label>
+                <input type="text" id="internship-name" name="internshipname" required>
+            </div>
+            <div class="form-group">
+                <label for="number-of-users-buy">Number of Users Bought:</label>
+                <input type="number" id="number-of-users-buy" name="numberofusersbuy" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="internshipdescription" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="details">Details:</label>
+                <textarea id="details" name="internshipdetails" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="picture">Picture URL:</label>
+                <input type="url" id="picture" name="picture" required>
+            </div>
+            <div class="form-group">
+                <label>Tasks:</label>
+                <div id="tasks">
+                    <div class="task">
+                        <input type="text" name="taskname[]" placeholder="Task Name" required>
+                        <input type="url" name="tasklink[]" placeholder="Task Link">
+                    </div>
+                </div>
+                <button type="button" id="add-task-button">Add Task</button>
+            </div>
+            <button type="submit">Save Internship</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('add-task-button').addEventListener('click', function() {
+            const taskContainer = document.createElement('div');
+            taskContainer.classList.add('task');
+            
+            const taskNameInput = document.createElement('input');
+            taskNameInput.setAttribute('type', 'text');
+            taskNameInput.setAttribute('name', 'taskname[]');
+            taskNameInput.setAttribute('placeholder', 'Task Name');
+            taskNameInput.required = true;
+            
+            const taskLinkInput = document.createElement('input');
+            taskLinkInput.setAttribute('type', 'url');
+            taskLinkInput.setAttribute('name', 'tasklink[]');
+            taskLinkInput.setAttribute('placeholder', 'Task Link');
+            
+            taskContainer.appendChild(taskNameInput);
+            taskContainer.appendChild(taskLinkInput);
+            
+            document.getElementById('tasks').appendChild(taskContainer);
+        });
+    </script>
+</body>
+</html>

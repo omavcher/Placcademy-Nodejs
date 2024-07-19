@@ -1,28 +1,19 @@
-// const express = require('express');
-// const router = express.Router();
-// const { isAdmin } = require("../middleware"); // Ensure you have this middleware
+const express = require('express');
+const router = express.Router();
+const { isAdmin } = require("../middleware"); // Ensure you have this middleware
+require('dotenv').config();
+const adminController = require("../controllers/admin");
+const wrapAsync = require("../utils/wrapAsync.js");
 
-// // Admin Login Route
-// router.get('/login', (req, res) => {
-//     res.send('admin/login'); // Ensure this view exists
-// });
 
-// router.post('/login', (req, res) => {
-//     const { email, password } = req.body;
-//     // Replace with actual password verification logic
-//     if (email === 'omawchar07@gmail.com' && password === 'adminpass') {
-//         req.session.isAdmin = true;
-//         req.flash('success', 'Welcome to the admin panel!');
-//         res.redirect('/admin/dashboard');
-//     } else {
-//         req.flash('error', 'Invalid credentials');
-//         res.redirect('/admin/login');
-//     }
-// });
+router.get('/login', adminController.adminlogin)
 
-// // Admin Dashboard Route (protected)
-// router.get('/dashboard', isAdmin, (req, res) => {
-//     res.render('admin/dashboard'); // Ensure this view exists
-// });
+router.post('/login',wrapAsync( adminController.adminlogindone));
 
-// module.exports = router;
+router.get('/dashboard', isAdmin, adminController.dashboard);
+
+router.get('/intership/new',isAdmin,adminController.newintership);
+router.post('/intership/new', isAdmin, adminController.createIntership);
+
+
+module.exports = router;
