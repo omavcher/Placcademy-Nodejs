@@ -24,8 +24,17 @@ module.exports.adminlogindone = (req, res) => {
     }
 };
 
-module.exports.dashboard =  (req, res) => {
-    res.render("admin/dashbord");
+module.exports.dashboard = async (req, res) => {
+    try {
+    const studentCount = await User.countDocuments({});   
+    const InternshipCount = await Internship.countDocuments({});   
+
+
+    res.render("admin/dashbord" , {studentCount , InternshipCount});
+    } catch (error) {
+        req.flash("error", error);
+        res.redirect('/admin/login');
+    }
 };
 
 
@@ -194,4 +203,78 @@ module.exports.deleteInternship = async (req, res) => {
         res.status(500).send('Internal Server Error');
         res.redirect("/admin/internship");
     }
+};
+
+
+module.exports.renderEmailForm = async (req, res) => {
+res.render('admin/emailForm');
+}
+
+
+const nodemailer = require('nodemailer');
+
+// Array of email configurations
+const emailConfigs = [
+    {
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER1,
+            pass: process.env.EMAIL_PASS1
+        }
+    },
+    {
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER2,
+            pass: process.env.EMAIL_PASS2
+        }
+    },
+    {
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER3,
+            pass: process.env.EMAIL_PASS3
+        }
+    },
+    {
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER4,
+            pass: process.env.EMAIL_PASS4
+        }
+    }
+];
+
+module.exports.sendEmail = async (req, res) => {
+    const { recipients, subject, message } = req.body;
+
+    let emailSent = false;
+    let errorMsg = '';
+
+    for (const config of emailConfigs) {
+        const transporter = nodemailer.createTransport(config);
+
+        const mailOptions = {
+            from: config.auth.user,
+            to: recipients,
+            subject: subject,
+            html: message
+        };
+
+        try {
+            await transporter.sendMail(mailOptions);
+            emailSent = true;
+            req.flash("success", "Email sent successfully!");
+            break;
+        } catch (error) {
+            console.error("Error sending email with account", config.auth.user, ":", error);
+            errorMsg = error.message;
+        }
+    }
+
+    if (!emailSent) {
+        req.flash("error", "Failed to send email. " + errorMsg);
+    }
+
+    res.redirect("/admin/email");
 };

@@ -31,16 +31,24 @@
            </a>
            <a href="/admin/students" >
               <span class="material-symbols-sharp">person_outline </span>
+
               <h3>All Students</h3>
+              <% if (studentCount !== undefined) { %>
+              <span class="msg_count"><%= studentCount %></span>
+              <% } %>
            </a>
+
            <a href="/admin/internship">
               <span class="material-symbols-sharp">insights </span>
               <h3>All Internship</h3>
+
+              <% if (InternshipCount !== undefined) { %>
+                <span class="msg_count"><%= InternshipCount %></span>
+                <% } %>
            </a>
-           <a href="#">
+           <a href="/admin/email">
               <span class="material-symbols-sharp">mail_outline </span>
-              <h3>Messages</h3>
-              <span class="msg_count">14</span>
+              <h3>Email</h3>
            </a>
            <a href="#">
               <span class="material-symbols-sharp">receipt_long </span>

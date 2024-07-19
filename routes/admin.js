@@ -25,4 +25,8 @@ router.post('/internship/edit/:id', isAdmin, adminController.editedtheinter);
 
 router.get('/internships/delete/:id',isAdmin, adminController.deleteInternship);
 
+
+router.get('/email',isAdmin,adminController.renderEmailForm);
+router.post('/send-email', isAdmin, adminController.sendEmail);
+
 module.exports = router;
