@@ -49,30 +49,17 @@
     </div>
 
     <div class="domains-tab">
-        <div id="domain-box">
-            <img src="https://firebasestorage.googleapis.com/v0/b/placcademy.appspot.com/o/intership_poster%2FWeb%20Development.png?alt=media&token=f5a57ebf-c31d-4720-bd4a-1d74ca613f2a" alt="Web Development">
-            <h3>Web Development</h3>
-        </div>
-        <div id="domain-box">
-            <img src="https://firebasestorage.googleapis.com/v0/b/placcademy.appspot.com/o/intership_poster%2FPaython.png?alt=media&token=6a1445b5-d0ea-4573-86d1-fe3c9d87d4f9" alt="Python">
-            <h3>Python</h3>
-        </div>
-        <div id="domain-box">
-            <img src="https://firebasestorage.googleapis.com/v0/b/placcademy.appspot.com/o/intership_poster%2FC%20(DSA).png?alt=media&token=6ae6dfff-ae0f-4eb0-b124-de31c8d63423" alt="C (DSA)">
-            <h3>C (DSA)</h3>
-        </div>
-        <div id="domain-box">
-            <img src="https://firebasestorage.googleapis.com/v0/b/placcademy.appspot.com/o/intership_poster%2FFront%20End.png?alt=media&token=9435cac1-b79b-42d6-b0d9-856e9566e42d" alt="Front End">
-            <h3>Front End</h3>
-        </div>
-        <div id="domain-box">
-            <img src="https://firebasestorage.googleapis.com/v0/b/placcademy.appspot.com/o/intership_poster%2FUI%20UX.png?alt=media&token=f90e47eb-6429-4c07-8272-cea979481d6b" alt="UI UX">
-            <h3>UI UX</h3>
-        </div> <div id="domain-box">
-            <img src="https://firebasestorage.googleapis.com/v0/b/placcademy.appspot.com/o/intership_poster%2FMobile%20App%20Development.png?alt=media&token=7df38762-1561-493c-81b7-7ee2205d9d42" alt="Mobile App Development">
-            <h3>Mobile App Development</h3>
-        </div>
 
+        <% internships.slice(0, 6).forEach(internship => { %>
+         
+            <a href="/internship/<%= internship._id %>">
+        <div id="domain-box">
+            <img src="<%= internship.picture %>" alt="<%= internship.internshipname %>">
+            <h3><%= internship.internshipname %></h3>
+        </div>
+</a>
+
+        <% }); %>
 
     </div>
     <div class="plans-box">
@@ -236,9 +223,64 @@
 </div>
 
 
+<script>
+    const internshipNames = <%- JSON.stringify(internshipNames) %>;
+    const internshipIds = <%- JSON.stringify(internshipIds) %>;
 
+    const searchResultsContainer = document.querySelector(".search-result");
+    const searchInput = document.getElementById("search-input");
 
+    searchInput.onkeyup = function() {
+        let result = [];
+        let input = searchInput.value;
 
+        if (input.length) {
+            result = internshipNames.filter((keyword) => {
+                return keyword.toLowerCase().includes(input.toLowerCase());
+            });
+        }
+        
+        renderSearchResults(result);
+    };
 
+    function renderSearchResults(results) {
+        searchResultsContainer.innerHTML = '';
 
+        if (results.length === 0) {
+            const noResultsDiv = document.createElement('div');
+            noResultsDiv.classList.add('search-results');
+            noResultsDiv.textContent = 'No results found.';
+            searchResultsContainer.appendChild(noResultsDiv);
+            return;
+        }
 
+        results.forEach((item) => {
+            const index = internshipNames.indexOf(item);
+            const internshipId = internshipIds[index];
+
+            const a = document.createElement('a');
+            a.href = `/internship/${internshipId}`;
+            a.classList.add('search-results');
+
+            const div = document.createElement('div');
+            div.classList.add('search-result');
+
+            const resultDiv = document.createElement('div');
+            resultDiv.classList.add('search-results');
+
+            const p = document.createElement('p');
+            p.textContent = item;
+
+            const img = document.createElement('img');
+            img.src = '/src/icons/next-icon.png';
+            img.alt = 'Next';
+
+            resultDiv.appendChild(p);
+            resultDiv.appendChild(img);
+            div.appendChild(resultDiv);
+            a.appendChild(div);
+
+            searchResultsContainer.appendChild(a);
+        });
+    }
+</script>

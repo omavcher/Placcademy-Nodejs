@@ -2,17 +2,23 @@ const { query } = require("express");
 const User = require('../models/user.js'); // Make sure your user model is correctly imported
 const sendMail = require('../email.js');
 const passport = require('passport');
+const Internship  = require('../models/intership');
 
 
-module.exports.homepage = (req, res) => {
-    // if (req.user) {
-    //     res.send('Welcome ' + req.user.email);
-    // } else {
-    //     res.redirect('/login');
-    //     return; // Ensure to return or end the function here
-    // }
-    res.render("main/index");
+module.exports.homepage = async (req, res) => {
+    try {
+        const internships = await Internship.find({}).lean();
+        const internshipNames = internships.map(internship => internship.internshipname);
+        const internshipIds = internships.map(internship => internship._id); // Get the IDs of internships
+
+        res.render('main/index', { internships, internshipNames, internshipIds });
+    } catch (error) {
+        req.flash("error", "Sorry, Please login again!");
+        res.status(500).send('Internal Server Error');
+        res.redirect("/login");
+    }
 };
+
 
 
 module.exports.aboutpage = (req, res) => {
