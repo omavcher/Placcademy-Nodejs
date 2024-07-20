@@ -93,3 +93,6 @@ module.exports.login = async (req, res) => {
     res.redirect("/");
 };
 
+module.exports.render = (req,res) => {
+    res.render();
+}

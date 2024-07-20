@@ -1,181 +1,143 @@
 <%= layout("/layouts/boilerplate") %>
 <style>
-/* Main container */
-.interposter {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column; /* Stack rows vertically */
-  background-color: #f9b79d;
-  padding: 1rem;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* Container for text information */
-.test-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-/* Title styling */
-.test-info h1 {
-  font-size: 2.6rem;
-  font-weight: bold;
-  color: #2e2e2e;
-  margin-bottom: 1rem; /* Increased margin for spacing */
-}
-
-/* Grid container for intership-cards */
-.intership-card-grid {
-  display: flex;
-  flex-wrap: wrap; /* Wrap intership-cards to new rows */
-  gap: 1rem; /* Gap between intership-cards */
-  overflow: hidden;
-  justify-content: center;
-}
-
-/* Individual intership-card styling */
-#registration-date-div {
-  width: 150px; /* Fixed width for square intership-card */
-  height: 150px; /* Fixed height for square intership-card */
-  position: relative; /* Positioning context for absolute children */
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* Different background images for each intership-card */
-.intership-card1 { background-image: url("/src/models_pics/10poster.webp"); }
-.intership-card2 { background-image: url("/src/models_pics/9poster.webp"); }
-.intership-card3 { background-image: url("/src/models_pics/8poster.webp"); }
-.intership-card4 { background-image: url("/src/models_pics/7poster.webp"); }
-
-/* Hover effect for intership-cards */
-#registration-date-div:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Content styling inside intership-card */
-#registration-date-div-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-  border-radius: 8px;
-  padding: 0.5rem; /* Reduced padding for smaller content */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center; /* Center text inside intership-card */
-}
-
-/* intership-card title styling */
-#registration-date-div h3 {
-  font-size: 1.2rem; /* Adjusted font size */
-  color: #333;
-  margin: 0;
-  margin-bottom: 0.5rem;
-}
-
-/* intership-card text styling */
-#registration-date-div p {
-  font-size: 1rem; /* Adjusted font size */
-  font-weight: 600;
-  color: #444;
-  margin: 0;
-}
-
-/* Poster image styling */
-.poster-test {
-  width: 40%;
-  height: 100%;
-  background-image: url("/src/models_pics/10poster.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 8px;
-}
-
-.givetest{
-  width: 100%;
-  height: 20rem;
-  background-color: blueviolet;
-}
-
-
-@media only screen and (max-device-width: 480px) {
-  #registration-date-div {
-    width: 100%; 
-    height: auto;
-  }
-
-  .test-info {
-    padding: 0.5rem;
-  }
-
-  #registration-date-div {
-    padding: 0.5rem;
-  }
-}
+  .givetest {
+            background-color: #FB4B04;
+            text-align: center;
+            padding: 50px 20px;
+            font-family: Arial, sans-serif;
+        }
+        .givetest h1 {
+            color: white;
+            font-size: 36px;
+        }
+        .givetest h1 span {
+            color: #8344C5;
+        }
+        .givetest .highlight {
+            background-color: #F2A200;
+            padding: 5px 10px;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .givetest .subtitle {
+            color: #CDE6F6;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .givetest .evaluate {
+            color: white;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .givetest .registration {
+            background-color: #c2fd00;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .registration:hover {
+            background-color: #98c600;
+        }
+        .givetest .date {
+            color: white;
+            font-size: 16px;
+        }
+        .givetest .login {
+            color: #83C9F2;
+            font-size: 16px;
+        }
+        .students-work {
+            background-color: #d9d9d9;
+            color: black;
+            text-align: center;
+            padding: 50px 20px;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .students-work h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            animation: slideInFromLeft 1s ease-in-out;
+        }
+        .students-work .companies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .students-work .companies img {
+            max-height: 60px;
+            max-width: 150px;
+            object-fit: contain;
+            animation: zoomIn 1s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .students-work .companies img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px #FB4B04;
+        }
+        .students-work .more-companies {
+            font-size: 20px;
+            margin-top: 30px;
+            animation: slideInFromRight 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
 </style>
 
-<div class="interposter">
-  <div class="test-info">
-    <h1>Important Dates</h1>
 
-    <div class="intership-card-grid">
-
-      <!-- ///////////////////////////////////////////////// reedit imp date from DB ////////////////////////// -->
-      <div id="registration-date-div" class="intership-card1">
-        <div id="registration-date-div-content">
-          <h3>Registration Start Date</h3>
-          <p>1 July 2024</p>
-        </div>
-      </div>
-
-      <div id="registration-date-div" class="intership-card2">
-        <div id="registration-date-div-content">
-          <h3>Registration END SOON..</h3>
-          <p>Internship for only first 10,000</p>
-        </div>
-      </div>
-
-      <div id="registration-date-div" class="intership-card3">
-        <div id="registration-date-div-content">
-          <h3>Entrance Exam Date</h3>
-          <p>19 July 2024</p>
-        </div>
-      </div>
-
-      <div id="registration-date-div" class="intership-card4">
-        <div id="registration-date-div-content">
-          <h3>Internship Allotment</h3>
-          <p>22 July 2024</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="poster-test"></div>
-</div>
       <!-- ///////////////////////////////////////////////// reedit imp date from DB ////////////////////////// -->
 
 
       <div class="givetest">
-        <h1>Hi <%= user.username %> Take a test and get free intership</h1>
-        <a href="/test/<%= user._id %>">TAKE TEST</a>
-      </div>
+        <h1>Placcademy</h1>
+        <div class="highlight">India’s Largest Placement Guidance Program*</div>
+        <div class="subtitle">Designed by our Top Engineers </div>
+        <div class="evaluate">Evaluate Yourself and Know Strength</div>
+       <a href="/syllabus"> <div class="registration">TAKE A TEST</div></a>
+        <div class="login">Registered users please login to take the test</div>
+    </div>
 
 
 
@@ -194,7 +156,7 @@
 
 /* Card styling */
 .intership-card {
-    width: 15rem;
+    width: 20rem;
     height: 14rem;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -306,4 +268,23 @@
       <% } %>
 
         <!-- Add more cards as needed -->
+    </div>
+
+    <div class="students-work">
+        <h2>Our students work at</h2>
+        <div class="companies">
+            <img src="/src/company_icons/aws.svg" alt="AWS">
+            <img src="/src/company_icons/Capgemini.svg" alt="Capgemini">
+            <img src="/src/company_icons/Persistent.svg" alt="Persistent">
+            <img src="/src/company_icons/Accenture.svg" alt="Accenture">
+            <img src="/src/company_icons/Wipro.svg" alt="Wipro">
+            <img src="/src/company_icons/Infosys.svg" alt="Infosys">
+            <img src="/src/company_icons/TCS.svg" alt="TCS">
+            <img src="/src/company_icons/Cognizant.svg" alt="Cognizant">
+            <img src="/src/company_icons/Emerson.svg" alt="Emerson">
+            <img src="/src/company_icons/HCL.svg" alt="HCL">
+            <img src="/src/company_icons/Siemens.svg" alt="Siemens">
+            <img src="/src/company_icons/Reliance.svg" alt="Reliance">
+        </div>            
+        <div class="more-companies">and 68+ more</div>
     </div>

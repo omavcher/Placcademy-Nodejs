@@ -27,6 +27,8 @@ router.get('/auth/google/callback',
     });
   
 
+router.get('/test')    
+
 
 
 

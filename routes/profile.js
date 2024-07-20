@@ -8,4 +8,7 @@ router.get("/",isLoggedIn,(profileController.profilepage));
 
 router.get("/:id/edit",isLoggedIn,(profileController.profileedit));
 
+
+router.get("/referral",isLoggedIn,(profileController.referralPage))
+
 module.exports = router;

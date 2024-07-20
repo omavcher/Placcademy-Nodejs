@@ -244,21 +244,6 @@
     color: #ddd;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .inership-container {
     background-color: #ffffff;
     border-radius: 10px;
@@ -592,28 +577,34 @@ and (max-device-width : 615px) {
             <button class="filter-btn" data-filter="payment">Payment</button>
         </div>
         <div class="notifications">
-            
-            <div class="notification tasks">
-                <img src="/src/icons/construction worker holding drill machine.png" alt="Task">
-                <p>Your internship submission is over soon...</p>
-                <span class="time">2 hr ago</span>
-            </div>
 
-
-            <div class="notification payment">
-                <img src="/src/icons/Money Note.png" alt="Payment">
-                <p>Your Transaction is successful</p>
-                <span class="time">12 hr ago</span>
-            </div>
-           
-
+            <% notifications.forEach(notification => { %>
+                <% if(notification.category === 'payment') { %>
+                    <div class="notification payment">
+                        <img src="/src/icons/Money Note.png" alt="Payment">
+                        <p><%= notification.message %></p>
+                        <span class="time"><%= new Date(notification.noti_date).toLocaleDateString() %></span>
+                    </div>
+                <% } else if(notification.category === 'tasks') { %>
+                    <div class="notification tasks">
+                        <img src="/src/icons/construction worker holding drill machine.png" alt="Task">
+                        <p><%= notification.message %></p>
+                        <span class="time"><%= new Date(notification.noti_date).toLocaleDateString() %></span>
+                    </div>
+                <% } else { %>
+                    <div class="notification task">
+                        <p><%= notification.message %></p>
+                        <span class="time"><%= new Date(notification.noti_date).toLocaleDateString() %></span>
+                    </div>
+                <% } %>
+            <% }) %>
         </div>
     </div>
 </div>
 
 
 <div class="notification-bar">
-   <a href="/profile"> 
+   <a href="/profile/referral"> 
     <div class="referral-btn-box">
        <img src="/src/icons/gift-icon.png" alt="referral-gift-btn">
    </div>
