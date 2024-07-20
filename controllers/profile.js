@@ -5,7 +5,6 @@ module.exports.profilepage = async (req, res) => {
     try {
         const email = req.user.email; // Use the email of the logged-in user
         const registeredUser = await User.findOne({ email: email });
-console.log(registeredUser);
         if (!registeredUser) {
             return res.status(404).send("User not found");
         }

@@ -64,8 +64,7 @@ module.exports.signup = async (req, res) => {
             testScore: null,
         });
 
-        const registeredUser = await User.register(newUser, password); // Assuming User.register is provided by passport-local-mongoose
-
+        const registeredUser = await User.register(newUser, password); 
         req.login(registeredUser, (err) => {
             if (err) {
                 throw err;

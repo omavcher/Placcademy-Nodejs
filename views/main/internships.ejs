@@ -29,19 +29,19 @@
   margin-bottom: 1rem; /* Increased margin for spacing */
 }
 
-/* Grid container for cards */
-.card-grid {
+/* Grid container for intership-cards */
+.intership-card-grid {
   display: flex;
-  flex-wrap: wrap; /* Wrap cards to new rows */
-  gap: 1rem; /* Gap between cards */
+  flex-wrap: wrap; /* Wrap intership-cards to new rows */
+  gap: 1rem; /* Gap between intership-cards */
   overflow: hidden;
   justify-content: center;
 }
 
-/* Individual card styling */
+/* Individual intership-card styling */
 #registration-date-div {
-  width: 150px; /* Fixed width for square card */
-  height: 150px; /* Fixed height for square card */
+  width: 150px; /* Fixed width for square intership-card */
+  height: 150px; /* Fixed height for square intership-card */
   position: relative; /* Positioning context for absolute children */
   border-radius: 8px;
   background-color: #ffffff;
@@ -52,19 +52,19 @@
   background-position: center;
 }
 
-/* Different background images for each card */
-.card1 { background-image: url("/src/models_pics/10poster.webp"); }
-.card2 { background-image: url("/src/models_pics/9poster.webp"); }
-.card3 { background-image: url("/src/models_pics/8poster.webp"); }
-.card4 { background-image: url("/src/models_pics/7poster.webp"); }
+/* Different background images for each intership-card */
+.intership-card1 { background-image: url("/src/models_pics/10poster.webp"); }
+.intership-card2 { background-image: url("/src/models_pics/9poster.webp"); }
+.intership-card3 { background-image: url("/src/models_pics/8poster.webp"); }
+.intership-card4 { background-image: url("/src/models_pics/7poster.webp"); }
 
-/* Hover effect for cards */
+/* Hover effect for intership-cards */
 #registration-date-div:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Content styling inside card */
+/* Content styling inside intership-card */
 #registration-date-div-content {
   position: absolute;
   top: 0;
@@ -78,10 +78,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center; /* Center text inside card */
+  text-align: center; /* Center text inside intership-card */
 }
 
-/* Card title styling */
+/* intership-card title styling */
 #registration-date-div h3 {
   font-size: 1.2rem; /* Adjusted font size */
   color: #333;
@@ -89,7 +89,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* Card text styling */
+/* intership-card text styling */
 #registration-date-div p {
   font-size: 1rem; /* Adjusted font size */
   font-weight: 600;
@@ -108,11 +108,17 @@
   border-radius: 8px;
 }
 
-/* Responsive design adjustments */
+.givetest{
+  width: 100%;
+  height: 20rem;
+  background-color: blueviolet;
+}
+
+
 @media only screen and (max-device-width: 480px) {
   #registration-date-div {
-    width: 100%; /* Full width for smaller screens */
-    height: auto; /* Adjust height for responsive design */
+    width: 100%; 
+    height: auto;
   }
 
   .test-info {
@@ -129,29 +135,31 @@
   <div class="test-info">
     <h1>Important Dates</h1>
 
-    <div class="card-grid">
-      <div id="registration-date-div" class="card1">
+    <div class="intership-card-grid">
+
+      <!-- ///////////////////////////////////////////////// reedit imp date from DB ////////////////////////// -->
+      <div id="registration-date-div" class="intership-card1">
         <div id="registration-date-div-content">
           <h3>Registration Start Date</h3>
           <p>1 July 2024</p>
         </div>
       </div>
 
-      <div id="registration-date-div" class="card2">
+      <div id="registration-date-div" class="intership-card2">
         <div id="registration-date-div-content">
           <h3>Registration END SOON..</h3>
           <p>Internship for only first 10,000</p>
         </div>
       </div>
 
-      <div id="registration-date-div" class="card3">
+      <div id="registration-date-div" class="intership-card3">
         <div id="registration-date-div-content">
           <h3>Entrance Exam Date</h3>
           <p>19 July 2024</p>
         </div>
       </div>
 
-      <div id="registration-date-div" class="card4">
+      <div id="registration-date-div" class="intership-card4">
         <div id="registration-date-div-content">
           <h3>Internship Allotment</h3>
           <p>22 July 2024</p>
@@ -161,3 +169,141 @@
   </div>
   <div class="poster-test"></div>
 </div>
+      <!-- ///////////////////////////////////////////////// reedit imp date from DB ////////////////////////// -->
+
+
+      <div class="givetest">
+        <h1>Hi <%= user.username %> Take a test and get free intership</h1>
+        <a href="/test/<%= user._id %>">TAKE TEST</a>
+      </div>
+
+
+
+<style>
+  /* Container for the card grid */
+.intership-intership-card-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card styling */
+.intership-card {
+    width: 15rem;
+    height: 14rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Start invisible for fade-in effect */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+}
+
+/* Fade-in animation for the card */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card image styling */
+.intership-card-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Transition for zoom effect */
+    animation: imgFadeIn 1s forwards; /* Fade-in animation for image */
+}
+
+/* Fade-in animation for the image */
+@keyframes imgFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Card content styling */
+.intership-card-content {
+    padding: 16px;
+    position: relative;
+}
+
+/* Card title styling */
+.intership-card-title {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+/* Card price styling */
+.intership-card-price {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Price strikethrough styling */
+.price-strike {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 8px;
+}
+
+/* Fee box styling */
+.fee-box {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background-color: #ffeb3b;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Scale effect on hover for the card */
+.intership-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Zoom effect on hover for the image */
+.intership-card-img:hover {
+    transform: scale(1.1);
+}
+
+</style>
+
+      <div class="intership-intership-card-container">
+        
+        <% for(let internship of internships) {%>
+      <a href="/internship/<%= internship._id %>"><div class="intership-card">
+            <img src="<%= internship.picture %>" alt="<%= internship.internshipname %>" class="intership-card-img">
+            <div class="intership-card-content">
+                <h3 class="intership-card-title"><%= internship.internshipname %></h3>
+                <p class="intership-card-price">₹ <%= internship.price %></p>
+                <div class="fee-box">Free</div>
+            </div>
+        </div></a>
+
+      <% } %>
+
+        <!-- Add more cards as needed -->
+    </div>
