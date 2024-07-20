@@ -278,3 +278,61 @@ module.exports.sendEmail = async (req, res) => {
 
     res.redirect("/admin/email");
 };
+
+module.exports.rendernotificationsender =  (req, res) => {
+    res.render("admin/notificationpanl");
+}
+
+
+
+module.exports.emailNotificationSendr = async (req, res) => {
+    try {
+        const { email, category, message } = req.body;
+        const user = await User.findOne({ email: email });
+
+        if (user) {
+            user.notifications.push({ type: 'notification', category, message });
+            await user.save();
+
+
+            req.flash('success', 'Notification was Send!');
+            return res.redirect('/admin/dashboard');
+        } else {
+            req.flash('error', 'User not found');
+            return res.redirect('/admin/dashboard');
+        }
+    } catch (error) {
+        req.flash('error', error.message);
+        res.status(500).redirect('/admin/dashboard');
+    }
+};
+
+
+module.exports.NotificationSendr = async (req, res) => {
+    try {
+        const { category, message } = req.body;
+
+        if (!category || !message) {
+            req.flash('error', 'Category and Message are required.');
+            return res.redirect('/admin/dashboard');
+        }
+
+        const users = await User.find({});
+
+        const notification = {
+            type: 'notification',
+            category,
+            message,
+            noti_date: new Date()
+        };
+        for (let user of users) {
+            user.notifications.push(notification);
+            await user.save();
+        }
+        req.flash('success', 'Notification sent to all users!');
+        res.redirect('/admin/dashboard');
+    } catch (error) {
+        req.flash('error', error.message);
+        res.status(500).redirect('/admin/dashboard');
+    }
+};

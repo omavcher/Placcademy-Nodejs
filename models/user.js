@@ -2,6 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 
+const notificationSchema = new mongoose.Schema({
+  type: {
+      type: String,
+      required: true
+  },
+  category: {
+      type: String,
+      required: true
+  },
+  message: {
+      type: String,
+      required: true
+  },
+  noti_date: {
+      type: Date,
+      default: Date.now
+  }
+});
+
 const UserSchema = new Schema({
   googleId: String,
   username: {
@@ -56,16 +75,7 @@ const UserSchema = new Schema({
   linkedinId: {
     type: String
   },
-  notifications: [{
-    type: {
-      type: String,
-      required: true
-    },
-    noti_date: {
-      type: Date,
-      default: Date.now
-    }
-  }],
+  notifications: [notificationSchema],
   referral: {
     type: String
   },

@@ -29,4 +29,12 @@ router.get('/internships/delete/:id',isAdmin, adminController.deleteInternship);
 router.get('/email',isAdmin,adminController.renderEmailForm);
 router.post('/send-email', isAdmin, adminController.sendEmail);
 
+
+router.get('/notification',isAdmin,adminController.rendernotificationsender);
+
+router.post('/emailnoti',isAdmin,adminController.emailNotificationSendr)
+router.post('/allnoti',isAdmin,adminController.NotificationSendr)
+
+
+
 module.exports = router;

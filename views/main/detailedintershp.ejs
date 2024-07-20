@@ -1,0 +1,207 @@
+<%= layout("/layouts/boilerplate") %>
+<style>
+#intershipdetal-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+.internship-details {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.internship-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.internship-header h1 {
+    font-size: 2rem;
+    color: #FB4B04;
+    margin: 0;
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 5px #FB4B04, 0 0 10px #FB4B04;
+    }
+    to {
+        text-shadow: 0 0 10px #FB4B04, 0 0 20px #FB4B04;
+    }
+}
+
+.internship-location {
+    font-size: 1rem;
+    color: #555;
+}
+
+.internship-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.internship-image {
+    max-width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.internship-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.internship-image img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+.internship-info {
+    padding: 0 15px;
+}
+
+.internship-price {
+    font-size: 1.25rem;
+    color: #FB4B04;
+    margin-bottom: 15px;
+}
+
+.price-strike {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 8px;
+}
+
+.price-current {
+    font-weight: bold;
+}
+
+.internship-description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.internship-details {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.internship-details li {
+    margin-bottom: 10px;
+}
+
+.apply-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #FB4B04;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.apply-btn:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .internship-main {
+        flex-direction: row;
+    }
+    
+    .internship-image, .internship-info {
+        flex: 1;
+    }
+
+    .internship-info {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .internship-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .internship-location {
+        font-size: 0.9rem;
+    }
+
+    .internship-price {
+        font-size: 1.1rem;
+    }
+
+    .internship-description {
+        font-size: 0.9rem;
+    }
+
+    .internship-details li {
+        font-size: 0.9rem;
+    }
+
+    .apply-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+<div id="intershipdetal-container">
+
+<div class="internship-details">
+    <div class="internship-header">
+        <h1><%= internship.internshipname %></h1>
+        <p class="internship-location">Location: Remote</p>
+    </div>
+    <div class="internship-main">
+        <div class="internship-image">
+            <img src="<%= internship.picture %>" alt="<%= internship.internshipname %>">
+        </div>
+        <div class="internship-info">
+            <div class="internship-price">
+                <span class="price-strike">₹ <%= (internship.price)+500 %></span>
+                <span class="price-current">₹ <%= internship.price %></span>
+            </div>
+            <h2>Description</h2>
+            <p class="internship-description"><%= internship.internshipdescription %></p>
+            <h2>Details</h2>
+            <ul class="internship-details">
+                <p><%= internship.internshipdetails %></p>
+            </ul>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+    </div>
+</div>
+</div>

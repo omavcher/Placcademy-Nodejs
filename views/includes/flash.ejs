@@ -6,7 +6,6 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        background-color: aqua; /* Added to visually distinguish the box */
     }
 
     #success-msg {
@@ -30,6 +29,15 @@
         padding: 0.5rem;
         font-size: 1.5rem;
     }
+
+
+    @media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    .msg-n-box {
+        font-size: 0.8rem;
+    }
+}
 </style>
 
 
