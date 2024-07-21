@@ -1,0 +1,196 @@
+<%= layout("/layouts/boilerplate") %>
+
+    <style>
+ 
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #FB4B04;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .test-container {
+            padding: 20px 40px;
+            position: relative;
+            background-color: white;
+            width: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 15px;
+            width: 0;
+            z-index: 1;
+            right: -15px;
+            border: medium solid #FB4B04;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #FB4B04;
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 15px;
+            width: 0;
+            z-index: 1;
+            left: -15px;
+            border: medium solid #FB4B04;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #FB4B04 transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .content table, .content th, .content td {
+            border: 1px solid black;
+        }
+
+        .content th, .content td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content ul li {
+            padding: 5px 0;
+        }
+
+        .content ul li::before {
+            content: "•";
+            color: #FB4B04;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .content .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .content .btn:hover {
+            background-color: #218838;
+        }
+
+        @media screen and (max-width: 900px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .test-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .test-container::before {
+                left: 60px;
+                border: medium solid #FB4B04;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #FB4B04 transparent transparent;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline">
+        <div class="test-container left">
+            <div class="content">
+                <h2>Exam Format</h2>
+                <table>
+                    <tr>
+                        <th>Exam Format</th>
+                        <th>Questions</th>
+                        <th>Total Time</th>
+                    </tr>
+                    <tr>
+                        <td>Logical Reasoning</td>
+                        <td>15</td>
+                        <td rowspan="3">30 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Quantitative Aptitude</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Verbal Ability</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+                <a href="#" class="btn">Download Syllabus 📋</a>
+            </div>
+        </div>
+        <div class="test-container right">
+            <div class="content">
+                <h2>Benefits for all</h2>
+                <ul>
+                    <li>Guaranteed internship for all participants</li>
+                    <li>30+ internship domains for all branches</li>
+                    <li>Nationally recognized participation certificate</li>
+                    <li>Placement assistance after completion of internship</li>
+                </ul>
+            </div>
+        </div>
+        <div class="test-container left">
+            <div class="content">
+                <h2>Eligibility Criteria</h2>
+                <a href="#" class="btn">Check Eligibility</a>
+            </div>
+        </div>
+    </div>
+

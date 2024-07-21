@@ -1,177 +1,336 @@
 <%= layout("/layouts/boilerplate") %>
 
 <style>
-.referral-container{
-    width: 100%;
-    height: 22rem;
-    background-color: #f78f66;
-}
-.referral-container-header{
-    width: 100%;
-    height: 15rem;
-    display: flex;
-    justify-content: space-around;
-}
-.referral-container-heading{
-    width: 30%;
-    height: 100%;
-    margin-left: 0.5rem;
-}
+    .referral-container {
+        width: 100%;
+        height: 22rem;
+        background-color: #f78f66;
+        padding: 20px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
 
-.referral-container-heading h1{
-    font-size: 3rem;
-    font-weight: bold;
-}
-#referral-container-header-svg-p{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 1.2rem;
-}
-.referral-section{
-    width: 100%;
-    height: 5rem;
-    display: flex;
-}
-.your-referral-code{
-    width: 22rem;
-    height: 100%;
-    border-radius: 0.5rem;
-    background-color: aliceblue;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-left: 15rem;
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 
-}
-#your-code-section{
-    width: 55%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#your-code-section h1{
-   font-size: 1.5rem;
-   font-weight: 600;
-}
-#copy-sharebtn-refral button{
-    border: 2px solid #C33C04;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.7rem;
-    color: black;
-    cursor: pointer;
-}
-#copy-btn {
-    background-color: #C33C04;
-}
+    .referral-container-header {
+        width: 100%;
+        height: 15rem;
+        display: flex;
+        justify-content: space-around;
+    }
 
-.referral-info{
-    width: 100%;
-    height: 30rem;
-    display: flex;
-}
+    .referral-container-heading {
+        width: 30%;
+        height: 100%;
+        margin-left: 0.5rem;
+    }
 
-.your-referrals-box{
-    width: 30%;
-    height:auto;
-    display: flex;
+    .referral-container-heading h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    #referral-container-header-svg-p {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 1.2rem;
+    }
+
+    .referral-section {
+        width: 100%;
+        height: 5rem;
+        display: flex;
+    }
+
+    .your-referral-code {
+        width: 22rem;
+        height: 100%;
+        border-radius: 0.5rem;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 15rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1s ease-in-out;
+    }
+
+    @keyframes slideIn {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0); }
+    }
+
+    #your-code-section {
+        width: 55%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #your-code-section h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    #copy-sharebtn-refral button {
+        border: 2px solid #C33C04;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 0.7rem;
+        color: black;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #copy-btn {
+        background-color: #C33C04;
+    }
+
+    #copy-btn:hover, #share-btn:hover {
+        background-color: #f78f66;
+    }
+
+    .referral-info {
+        width: 100%;
+        height: auto;
+        display: flex;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .your-referrals-box {
+        width: 30%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 2rem;
+        margin-left: 5rem;
+    }
+
+    .your-referrals-box h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .your-referrals-detalis {
+        width: 70%;
+        height: 100%;
+    }
+
+    #your-referrals-user-box {
+        width: 25rem;
+        height: auto;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: zoomIn 1.5s ease-in-out;
+    }
+    .referraldd-infod {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    .referraldd-infod ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .referraldd-infod li {
+        display: flex;
+        align-items: flex-start;
+        margin: 10px 0;
+        font-size: 1rem;
+        color: #333;
+    }
+    .referraldd-infod li img {
+        margin-right: 10px;
+        width: 24px;
+        height: 24px;
+    }
+    @media (max-width: 480px) {
+        .referraldd-infod {
+            padding: 10px;
+        }
+        .referraldd-infod li {
+            font-size: 0.9rem;
+            margin: 8px 0;
+        }
+        .referraldd-infod li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+    }
+    @keyframes zoomIn {
+        from { transform: scale(0); }
+        to { transform: scale(1); }
+    }
+
+    #referral-user {
+        margin: 0.5rem 0;
+        width: 90%;
+        height: 3rem;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    #referral-user:hover {
+        background-color: #ccc;
+    }
+
+    .co-reward-ntainer {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    .reward {
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .reward:last-child {
+        border-bottom: none;
+    }
+
+    .reward h3 {
+        display: flex;
+        align-items: center;
+    }
+
+    .reward img {
+        margin-right: 10px;
+    }
+
+    .reward p {
+        margin: 10px 0;
+        color: #555;
+    }
+
+    .table-co-reward-ntainer {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f9f9f9;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 780px) {
+        .referral-info {
+            flex-direction: column;
+        }
+
+        .referral-container-heading {
+            width: 56%;
+        }
+
+        .referral-container-heading h1 {
+            width: 12rem;
+            font-size: 2rem;
+        }
+
+        #wallet-svg {
+            width: 10rem;
+        }
+
+        #referral-container-header-svg-p {
+            width: 18rem;
+            font-size: 0.9rem;
+        }
+
+        .referral-section {
+            width: 103%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #your-code-section {
+            width: 45%;
+        }
+
+        .your-referral-code {
+            justify-content: center;
+            width: 20rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .referral-info{
+            align-items: start;
+        }
+        .your-referrals-detalis{
+            width: 94%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .your-referrals-box{
+        width: 86%;
+    height: auto;
     align-items: center;
     flex-direction: column;
     padding-bottom: 2rem;
-}
-.your-referrals-box h1{
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 2rem;
-}
-.your-referrals-detalis{
-    width: 70%;
-    height: 100%;
-    background-color: #C33C04;
-}
-
-#your-referrals-user-box{
-    width: 25rem;
-    height: auto;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#referral-user{
-    margin: 0.5rem 0 0.5rem;
-    width: 90%; 
-    height: 3rem;
-    border: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-}
-#referral-user:hover{
-    background-color: #ccc;
-}
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-    .referral-info{
-flex-direction: column;
-    }
-
-    .referral-container-heading{
-    width: 56%;
-    }
-    .referral-container-heading h1{
-        width: 12rem;
-   font-size: 2rem;
-    }
-    #wallet-svg{
-        width: 10rem;
-    }
-    #referral-container-header-svg-p{
-        width: 18rem;
-        font-size: 0.9rem;
-    }
-    .referral-section {
-     width: 91%;
-     margin-left: auto;
-     margin-right: auto;
-    }
-    #your-code-section{
-        width: 45%;
-    }
-    .your-referral-code{
-        justify-content: center;
-        width: 20rem;
     margin-left: auto;
     margin-right: auto;
     }
-
-}
-
-
+    #your-referrals-user-box{
+        width: 18rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
 </style>
-
 
 <div class="referral-container">
     <div class="referral-container-header">
         <div class="referral-container-heading">
-        <h1>Refer friends, win exciting rewards</h1>
-        <div id="referral-container-header-svg-p">
-        <img src="/src/models_pics/Employee getting Customer requirements.svg">
-        <p>5.6K learners have earned ₹1M+ worth of rewards</p>
-       </div></div>
-       <img id="wallet-svg" src="/src//models_pics/Wallet.svg">
+            <h1>Refer friends, win exciting rewards</h1>
+            <div id="referral-container-header-svg-p">
+                <img src="/src/models_pics/Employee getting Customer requirements.svg">
+                <p>5.6K learners have earned ₹1M+ worth of rewards</p>
+            </div>
+        </div>
+        <img id="wallet-svg" src="/src/models_pics/Wallet.svg">
     </div>
 
-
     <div class="referral-section">
-     
         <div class="your-referral-code">
             <div id="your-code-section">
                 <p>Your referral code</p>
@@ -185,64 +344,126 @@ flex-direction: column;
     </div>
 </div>
 
-
-
 <div class="referral-info">
     <div class="your-referrals-box">
         <h1>Your Referrals</h1>
         <div id="your-referrals-user-box">
-            <% if(referredUsers.length === 0){ %>
+            <% if (referredUsers.length === 0) { %>
                 <div id="referral-user">
                     <h2>No Users Referred</h2>
                 </div>
             <% } else { %>
-                <% for(let referredUser of referredUsers){ %>
+                <% for (let referredUser of referredUsers) { %>
                     <div id="referral-user">
                         <h2><%= referredUser.username %></h2>
                     </div>
                 <% } %>
             <% } %>
         </div>
+        
+
+        <div class="referraldd-infod">
+            <ul>
+                <li>
+                    <img src="/src/icons/orange box.png" alt="Icon">
+                    Store purchase for a minimum of ₹2,500 is qualified as a successful referral
+                </li>
+                <li>
+                    <img src="/src/icons/orange box.png" alt="Icon">
+                    Free plus subscription will be granted only when the referred learner purchases a Plus/Iconic subscription with your referral code
+                </li>
+                <li>
+                    <img src="/src/icons/orange box.png" alt="Icon">
+                    Vouchers will be granted after the refund period of the referee is over.
+                </li>
+                <li>
+                    <img src="/src/icons/orange box.png" alt="Icon">
+                    Vouchers will be disbursed after first two successful referrals.
+                </li>
+                <li>
+                    <img src="/src/icons/orange box.png" alt="Icon">
+                    Free plus subscription will be granted in the same goal as your friend's.
+                </li>
+            </ul>
+            </div>
+
     </div>
 
-    
-    <div class="your-referrals-detalis"></div>
-
-
+    <div class="your-referrals-detalis">
+        <div class="co-reward-ntainer">
+            <div class="reward">
+                <h3>
+                    <img src="/src/icons/woman-mobile.png" alt="Mobile Icon" width="50">
+                    Brand new Mobile
+                </h3>
+                <p>You get a brand new Mobile when you complete 20 successful referrals of more than ₹2,000 and a duration of 7 months or more.</p>
+            </div>
+            <div class="reward">
+                <h3>
+                    <img src="/src/icons/coupon-code.png" alt="Voucher Icon" width="50">
+                    Amazon voucher worth upto ₹1,000
+                </h3>
+                <p>Win Amazon vouchers up to ₹1,700 when your friend purchases a subscription or store product for a minimum of ₹500.</p>
+                <div class="table-co-reward-ntainer">
+                    <table>
+                        <tr>
+                            <th>Referral amount</th>
+                            <th>Amazon voucher</th>
+                        </tr>
+                        <tr>
+                            <td>₹500 - ₹800</td>
+                            <td>₹150</td>
+                        </tr>
+                        <tr>
+                            <td>₹1,000 - ₹2,000</td>
+                            <td>₹400</td>
+                        </tr>
+                        <tr>
+                            <td>₹2,500 - ₹4,000</td>
+                            <td>₹800</td>
+                        </tr>
+                        <tr>
+                            <td>₹5,000 - ₹7,000</td>
+                            <td>₹1500</td>
+                        </tr>
+                        <tr>
+                            <td>> ₹10,000</td>
+                            <td>₹4000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const copyBtn = document.getElementById("copy-btn");
-    const shareBtn = document.getElementById("share-btn");
-    const referralCode = document.getElementById("referral-code").innerText;
+        const copyBtn = document.getElementById("copy-btn");
+        const shareBtn = document.getElementById("share-btn");
+        const referralCode = document.getElementById("referral-code").innerText;
 
-    copyBtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(referralCode).then(() => {
-            alert("Referral code copied to clipboard!");
-        }).catch(err => {
-            console.error("Failed to copy text: ", err);
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(referralCode).then(() => {
+                alert("Referral code copied to clipboard!");
+            }).catch(err => {
+                console.error("Failed to copy text: ", err);
+            });
+        });
+
+        shareBtn.addEventListener("click", () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: "Referral Code",
+                    text: `Use my referral code: ${referralCode}`,
+                }).then(() => {
+                    console.log("Referral code shared successfully!");
+                }).catch(err => {
+                    console.error("Failed to share: ", err);
+                });
+            } else {
+                alert("Your browser does not support the Web Share API.");
+            }
         });
     });
-
-    shareBtn.addEventListener("click", () => {
-        if (navigator.share) {
-            navigator.share({
-                title: "Referral Code",
-                text: `Use my referral code: ${referralCode}`,
-            }).then(() => {
-                console.log("Referral code shared successfully!");
-            }).catch(err => {
-                console.error("Failed to share: ", err);
-            });
-        } else {
-        }
-    });
-});
-
 </script>

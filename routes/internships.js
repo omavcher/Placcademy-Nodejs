@@ -5,7 +5,7 @@ const { isLoggedIn } = require("../middleware");
 
 
 
-router.get("/",isLoggedIn,(internshipController.intershipspage)) 
+router.get("/",(internshipController.intershipspage)) 
 
 router.get("/internship/:id", isLoggedIn, internshipController.internshipDetailedPage);
 

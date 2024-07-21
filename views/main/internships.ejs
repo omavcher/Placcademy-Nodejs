@@ -73,7 +73,7 @@
         .students-work .companies img {
             max-height: 60px;
             max-width: 150px;
-            object-fit: contain;
+            object-fit: contain;cursor: pointer;
             animation: zoomIn 1s ease-in-out;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
@@ -260,7 +260,8 @@
             <img src="<%= internship.picture %>" alt="<%= internship.internshipname %>" class="intership-card-img">
             <div class="intership-card-content">
                 <h3 class="intership-card-title"><%= internship.internshipname %></h3>
-                <p class="intership-card-price">₹ <%= internship.price %></p>
+                <p class="intership-card-price"><span class="price-strike">₹ <%= (internship.price)+500 %></span></p>
+                <p>₹ <%= internship.price %></p>
                 <div class="fee-box">Free</div>
             </div>
         </div></a>

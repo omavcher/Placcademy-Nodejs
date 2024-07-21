@@ -93,6 +93,6 @@ module.exports.login = async (req, res) => {
     res.redirect("/");
 };
 
-module.exports.render = (req,res) => {
-    res.render();
+module.exports.syllabusPage = (req,res) => {
+    res.render("main/syllabus");
 }
