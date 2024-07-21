@@ -1,69 +1,208 @@
-<style>
-    .referraldd-infod {
-        font-family: Arial, sans-serif;
-        max-width: 600px;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
-    .referraldd-infod ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    .referraldd-infod li {
-        display: flex;
-        align-items: flex-start;
-        margin: 10px 0;
-        font-size: 1rem;
-        color: #333;
-    }
-    .referraldd-infod li img {
-        margin-right: 10px;
-        width: 24px;
-        height: 24px;
-    }
-    @media (max-width: 480px) {
-        .referraldd-infod {
-            padding: 10px;
+ <style>
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .referraldd-infod li {
-            font-size: 0.9rem;
-            margin: 8px 0;
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #FB4B04;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
         }
-        .referraldd-infod li img {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
+        .testcottainer {
+            padding: 20px 40px;
+            position: relative;
+            background-color: white;
+            width: 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px 0;
         }
-    }
-</style>
-</head>
-<body>
-
-<div class="referraldd-infod">
-<ul>
-    <li>
-        <img src="path/to/icon.png" alt="Icon">
-        Store purchase for a minimum of ₹2,500 is qualified as a successful referral
-    </li>
-    <li>
-        <img src="path/to/icon.png" alt="Icon">
-        Free plus subscription will be granted only when the referred learner purchases a Plus/Iconic subscription with your referral code
-    </li>
-    <li>
-        <img src="path/to/icon.png" alt="Icon">
-        Vouchers will be granted after the refund period of the referee is over.
-    </li>
-    <li>
-        <img src="path/to/icon.png" alt="Icon">
-        Vouchers will be disbursed after first two successful referrals.
-    </li>
-    <li>
-        <img src="path/to/icon.png" alt="Icon">
-        Free plus subscription will be granted in the same goal as your friend's.
-    </li>
-</ul>
-</div>
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before,
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            border-style: solid;
+            border-width: 10px;
+        }
+        .left::before {
+            right: -10px;
+            border-color: transparent #FB4B04 transparent transparent;
+        }
+        .right::before {
+            left: -10px;
+            border-color: transparent transparent transparent #FB4B04;
+        }
+        .content h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .content table, .content th, .content td {
+            border: 1px solid black;
+        }
+        .content th, .content td {
+            padding: 8px;
+            text-align: center;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content ul li {
+            padding: 5px 0;
+        }
+        .content ul li::before {
+            content: "•";
+            color: #FB4B04;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .content .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .content .btn:hover {
+            background-color: #218838;
+        }
+        @media screen and (max-width: 900px) {
+            .timeline::after {
+                display: none;
+            }
+            .testcottainer {
+                width: 100%;
+                padding: 20px;
+                margin-left: 0;
+            }
+            .left, .right {
+                left: 0;
+            }
+            .testcottainer::before {
+                left: 20px;
+                border: medium solid #FB4B04;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #FB4B04 transparent transparent;
+            }
+            .left::before,
+            .right::before {
+                content: " ";
+                height: 0;
+                position: absolute;
+                top: 22px;
+                width: 0;
+                z-index: 1;
+                border-style: solid;
+                border-width: 10px;
+            }
+            .left::before {
+                left: -10px;
+                border-color: transparent transparent transparent #FB4B04;
+            }
+            .right::before {
+                left: -10px;
+                border-color: transparent transparent transparent #FB4B04;
+            }
+        }
+        .instructions img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+    <div class="timeline">
+        <div class="testcottainer left">
+            <div class="content">
+                <h2>Exam Format</h2>
+                <table>
+                    <tr>
+                        <th>Exam Format</th>
+                        <th>Questions</th>
+                        <th>Total Time</th>
+                    </tr>
+                    <tr>
+                        <td>Analytical aptitude</td>
+                        <td>15</td>
+                        <td rowspan="3">30 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Quantitative Aptitude</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Verbal Ability</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+                <a href="#" class="btn">Download Syllabus 📋</a>
+            </div>
+        </div>
+        <div class="testcottainer right">
+            <div class="content">
+                <h2>Benefits for all</h2>
+                <ul>
+                    <li>20 internship domains for all branches</li>
+                    <li>Guaranteed internship for all qualified students</li>
+                    <li>Nationally recognized participation certificate</li>
+                    <li>Placement assistance after completion of internship</li>
+                </ul>
+            </div>
+        </div>
+        <div class="testcottainer left">
+            <div class="content">
+                <h2>Coupon <p>(Optional)</p></h2>
+                <form>
+                    <input type="text" name="coupon-code" placeholder="Coupon Code">
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+        <div class="testcottainer right">
+            <div class="content instructions">
+                <h2>Exam Instructions</h2>
+                <ul>
+                    <li>Navigate between questions using the Previous and Next buttons.</li>
+                    <li>Click "Mark Review" to mark a question for review later.</li>
+                    <li>Click "Submit" to finalize your answers.</li>
+                    <li>Questions marked for review will not be submitted unless answered.</li>
+                </ul>
+                <h3>Graphics:</h3>
+                <p><strong>Answered:</strong> Green circle</p>
+                <img src="/path/to/answered.png" alt="Answered Example">
+                <p><strong>Marked for Review:</strong> Orange circle</p>
+                <img src="/path/to/review.png" alt="Marked for Review Example">
+                <p><strong>Current Question:</strong> Blue circle</p>
+                <img src="/path/to/current.png" alt="Current Question Example">
+                <p><strong>Unanswered:</strong> Gray circle</p>
+                <img src="/path/to/unanswered.png" alt="Unanswered Example">
+                <a href="#" class="btn">Take Test</a>
+            </div>
+        </div>
+    </div>

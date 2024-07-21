@@ -96,3 +96,10 @@ module.exports.login = async (req, res) => {
 module.exports.syllabusPage = (req,res) => {
     res.render("main/syllabus");
 }
+
+module.exports.couponApply = (req,res) => {
+    let { coupon_code } = req.body;
+    console.log(coupon_code);
+    req.flash("success", "Your Cupon Code is applay now take test");
+    res.redirect("/syllabus");
+}

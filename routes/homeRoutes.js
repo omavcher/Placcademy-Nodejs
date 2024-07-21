@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const homeController = require("../controllers/home"); // Adjust if your controller path is different
 const passport = require('passport');
+const { isLoggedIn } = require("../middleware");
 
 router.get("/", homeController.homepage);
 router.get("/about", homeController.aboutpage);
@@ -28,7 +29,8 @@ router.get('/auth/google/callback',
   
 
 router.get('/syllabus', homeController.syllabusPage);
-
+ 
+router.post('/coupon', isLoggedIn,homeController.couponApply)
 
 
 
