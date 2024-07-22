@@ -88,7 +88,7 @@ app.use("/admin",adminRoutes)
 
 // 404 Error handler
 app.use((req, res, next) => {
-  next(new ExpressError(404, `Page Not Found - ${req.originalUrl}`));
+  res.status(404).render('includes/404error', { url: req.originalUrl });
 });
 
 // Generic error handler
