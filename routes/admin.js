@@ -36,5 +36,7 @@ router.post('/emailnoti',isAdmin,adminController.emailNotificationSendr)
 router.post('/allnoti',isAdmin,adminController.NotificationSendr)
 
 
+router.get('/testallow',isAdmin,adminController.TestAllow);
+
 
 module.exports = router;

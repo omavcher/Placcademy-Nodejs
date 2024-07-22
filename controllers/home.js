@@ -63,6 +63,12 @@ module.exports.signup = async (req, res) => {
             notifications: [],
             referral: referralCode, // Assuming referral is a string
             testScore: '',
+            internship: { // Initialize the internship subdocument
+                task: '',
+                taskStatus: '',
+                taskSubmissionLink: '',
+                testallow: false // Set the testallow field within the internship subdocument
+            }
         });
 
         const registeredUser = await User.register(newUser, password); 

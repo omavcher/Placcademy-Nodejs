@@ -336,3 +336,26 @@ module.exports.NotificationSendr = async (req, res) => {
         res.status(500).redirect('/admin/dashboard');
     }
 };
+
+
+
+
+module.exports.TestAllow = async (req, res) => {
+    try {
+        // Get search query from request
+        const searchQuery = req.query.search || '';
+
+        // Fetch students from the database, optionally filtering by email
+        const students = await User.find({
+            email: { $regex: searchQuery, $options: 'i' } // Case-insensitive search
+        });
+
+        // Render the view with searchQuery
+        res.render('admin/testnoti', { students, searchQuery });
+    } catch (error) {
+        // Handle error and redirect with a flash message
+        req.flash("error", "An error occurred while fetching student data.");
+        res.redirect("/admin/dashboard");
+    }
+}
+

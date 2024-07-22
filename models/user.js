@@ -104,6 +104,9 @@ const UserSchema = new Schema({
     },
     taskSubmissionLink: {
       type: String
+    },
+    testallow:{
+      type:Boolean
     }
   }
 });

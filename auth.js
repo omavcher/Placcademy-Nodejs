@@ -63,7 +63,13 @@ passport.use(new GoogleStrategy({
             notifications: [],
             referral: referralCode,
             testScore: '',
-          });
+            internship: { // Initialize the internship subdocument
+                task: '',
+                taskStatus: '',
+                taskSubmissionLink: '',
+                testallow: false // Set the testallow field within the internship subdocument
+            }
+        });
 
           newUser.save()
             .then(() => done(null, newUser))
