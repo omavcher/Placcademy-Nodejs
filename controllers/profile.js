@@ -65,3 +65,7 @@ module.exports.referralPage = async (req, res) => {
 
 
 
+module.exports.editpro = async (req, res) => {
+    res.send(req.file);
+   
+};

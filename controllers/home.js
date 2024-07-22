@@ -52,16 +52,16 @@ module.exports.signup = async (req, res) => {
             username,
             profile_dp: '/src/defaults/default dp.jpg',
             bio: '',
-            internshipName: null,
-            internshipId: null,
-            plan: null,
-            location: null,
-            collegeName: null,
-            instagramId: null,
-            linkedinId: null,
+            internshipName: '',
+            number: '',
+            plan: '',
+            location: '',
+            collegeName: '',
+            instagramId: '',
+            linkedinId: '',
             notifications: [],
             referral: referralCode, // Assuming referral is a string
-            testScore: null,
+            testScore: '',
         });
 
         const registeredUser = await User.register(newUser, password); 

@@ -146,30 +146,34 @@
         </div>
         <div class="form-container">
             <h3>Edit Profile</h3>
-            <form id="editProfileForm">
+            <form action="/profile/<%= user._id %>/edit" method="POST" id="editProfileForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="bio">Bio</label>
-                    <textarea class="form-control" id="bio" rows="3"><%= user.bio %></textarea>
+                    <textarea class="form-control" name="user[bio]" id="bio" rows="3"><%= user.bio %></textarea>
                 </div>
                 <div class="form-group">
                     <label for="location">Location</label>
-                    <input value="<%= user.location %>" type="text" class="form-control" id="location">
+                    <input value="<%= user.location %>" name="user[location]" type="text" class="form-control" id="location">
                 </div>
                 <div class="form-group">
                     <label for="number">Mobile Number</label>
-                    <input type="text" value="<%= user.number %>"  class="form-control" id="number">
+                    <input type="text" value="<%= user.number %>" name="user[number]"  class="form-control" id="number">
                 </div>
                 <div style="display: none;" class="form-group">
                     <label for="profilePicture">Profile Picture</label>
-                    <input type="file" class="form-control-file" id="profilePicture">
+                    <input type="file" name="user[profile_dp]" class="form-control-file" id="profilePicture">
+                </div>
+                <div class="form-group">
+                    <label for="collegeName">College Name</label>
+                    <input type="text" value="<%= user.collegeName %>" name="user[collegeName]" class="form-control" id="instagramId">
                 </div>
                 <div class="form-group">
                     <label for="instagramId">Instagram ID</label>
-                    <input type="text" value="<%= user.instagramId %>" class="form-control" id="instagramId">
+                    <input type="text" value="<%= user.instagramId %>" name="user[instagramId]" class="form-control" id="instagramId">
                 </div>
                 <div class="form-group">
                     <label for="linkedinId">LinkedIn ID</label>
-                    <input type="text" value="<%= user.linkedinId %>" class="form-control" id="linkedinId">
+                    <input type="text" value="<%= user.linkedinId %>" name="user[linkedinId]" class="form-control" id="linkedinId">
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
             </form>
