@@ -3,7 +3,7 @@ const router = express.Router();
 const profileController = require("../controllers/profile.js");
 const { isLoggedIn } = require("../middleware");
 const multer  = require('multer')
-const upload = multer({ dest: 'https://console.firebase.google.com/u/0/project/placcademy/storage/placcademy.appspot.com/files/~2Fprofile_dp/' })
+const upload = multer({ dest: 'uploads/' })
 
 
 
