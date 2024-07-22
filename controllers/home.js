@@ -106,27 +106,29 @@ const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
 
 module.exports.syllabusPage = async (req, res) => {
-    const url = 'https://zerotize.in/api_payment_init';
+    const paymentInitUrl = 'https://zerotize.in/api_payment_init';
+    const paymentStatusUrl = 'https://zerotize.in/api_payment_status';
     const account_id = process.env.UPI_ACCOUNT_ID; // Required - Account ID
     const secret_key = process.env.UPI_SECRET_KEY;
-    const payment_id = uuidv4();
     const payment_purpose = 'Test';
-    const payment_amount = '10';
+    const payment_amount = '1';
 
     try {
         const email = req.user.email;
         const registeredUser = await User.findOne({ email: email });
+
         if (!registeredUser) {
             req.flash("error", "Sorry, Please login");
             return res.redirect('/login');
         }
 
+        const payment_id = uuidv4();
         const payment_name = registeredUser.username;
         const payment_phone = registeredUser.number;
         const payment_email = registeredUser.email;
-        const redirect_url = 'http://localhost:8080/internships';
+        const redirect_url = `http://localhost:8080/test?i=${payment_id}`;
 
-        const data = {
+        const initData = {
             account_id: account_id,
             secret_key: secret_key,
             payment_id: payment_id,
@@ -138,24 +140,66 @@ module.exports.syllabusPage = async (req, res) => {
             redirect_url: redirect_url
         };
 
-        try {
-            const response = await axios.post(url, { init_payment: data }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+        const initResponse = await axios.post(paymentInitUrl, { init_payment: initData }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-            const payment_link = response.data.response.payment_link;        
-                console.log(payment_link);
+        const payment_link = initResponse.data.response.payment_link;
+
+        if (payment_link) {
+            // Store payment_id in session
+            req.session.payment_id = payment_id;
 
             return res.render("main/syllabus", { payment_link });
-        } catch (error) {
-            console.error("Error initiating payment:", error);
-            return res.status(500).send("Error initiating payment");
         }
 
-    } catch (e) {
-        console.error("Error finding user:", e);
-        return res.status(500).send("Error finding user");
+    } catch (error) {
+        console.error("Error:", error);
+        return res.status(500).send("An error occurred");
+    }
+};
+
+
+module.exports.TestPage = async (req, res) => {
+    const paymentStatusUrl = 'https://zerotize.in/api_payment_status';
+    const account_id = process.env.UPI_ACCOUNT_ID; // Required - Account ID
+    const secret_key = process.env.UPI_SECRET_KEY;
+    const payment_id = req.session.payment_id;
+
+    console.log('Retrieved Payment ID from session:', payment_id); // Debug log
+
+    if (!payment_id) {
+        return res.status(400).send("No payment ID found in session");
+    }
+
+    const statusData = {
+        account_id: account_id,
+        secret_key: secret_key,
+        payment_id: payment_id
+    };
+
+    try {
+        const statusResponse = await axios.post(paymentStatusUrl, { fetch_payment: statusData }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        console.log('Payment Status Response:', statusResponse.data); // Debug log
+
+        const paymentStatus = statusResponse.data;
+        const paymentMessage = statusResponse.data.response;
+
+  
+        return res.send({
+            status: paymentStatus,
+            message: paymentMessage
+        });
+
+    } catch (error) {
+        console.error("Error fetching payment status:", error);
+        return res.status(500).send("Error fetching payment status");
     }
 };
