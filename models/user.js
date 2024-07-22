@@ -87,7 +87,7 @@ const UserSchema = new Schema({
     type: String
   },
   testScore: {
-    type: Number
+    type: String
   },
   internship: {
     task: {

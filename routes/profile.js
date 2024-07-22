@@ -3,7 +3,8 @@ const router = express.Router();
 const profileController = require("../controllers/profile.js");
 const { isLoggedIn } = require("../middleware");
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const { cloudinary, storage } = require('../cloudconfig');
+const upload = multer({storage})
 
 
 

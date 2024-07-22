@@ -71,9 +71,7 @@ module.exports.signup = async (req, res) => {
             }
             const recipientEmail = email;
 sendMail(recipientEmail).then(() => {
-  console.log('Mail function executed successfully.');
 }).catch(error => {
-  console.error('Error executing mail function:', error);
 });
             req.flash("success", "Welcome to Placcademy");
             res.redirect("/");
@@ -99,7 +97,6 @@ module.exports.syllabusPage = (req,res) => {
 
 module.exports.couponApply = (req,res) => {
     let { coupon_code } = req.body;
-    console.log(coupon_code);
     req.flash("success", "Your Cupon Code is applay now take test");
     res.redirect("/syllabus");
 }
