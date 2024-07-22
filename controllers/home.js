@@ -3,6 +3,7 @@ const User = require('../models/user.js'); // Make sure your user model is corre
 const sendMail = require('../email.js');
 const passport = require('passport');
 const Internship  = require('../models/intership');
+require('dotenv').config();
 
 
 module.exports.homepage = async (req, res) => {
@@ -91,12 +92,70 @@ module.exports.login = async (req, res) => {
     res.redirect("/");
 };
 
-module.exports.syllabusPage = (req,res) => {
-    res.render("main/syllabus");
-}
-
 module.exports.couponApply = (req,res) => {
     let { coupon_code } = req.body;
     req.flash("success", "Your Cupon Code is applay now take test");
     res.redirect("/syllabus");
 }
+
+
+
+// This is reqiret to payment page for test
+
+const axios = require('axios');
+const { v4: uuidv4 } = require('uuid');
+
+module.exports.syllabusPage = async (req, res) => {
+    const url = 'https://zerotize.in/api_payment_init';
+    const account_id = process.env.UPI_ACCOUNT_ID; // Required - Account ID
+    const secret_key = process.env.UPI_SECRET_KEY;
+    const payment_id = uuidv4();
+    const payment_purpose = 'Test';
+    const payment_amount = '10';
+
+    try {
+        const email = req.user.email;
+        const registeredUser = await User.findOne({ email: email });
+        if (!registeredUser) {
+            req.flash("error", "Sorry, Please login");
+            return res.redirect('/login');
+        }
+
+        const payment_name = registeredUser.username;
+        const payment_phone = registeredUser.number;
+        const payment_email = registeredUser.email;
+        const redirect_url = 'http://localhost:8080/internships';
+
+        const data = {
+            account_id: account_id,
+            secret_key: secret_key,
+            payment_id: payment_id,
+            payment_purpose: payment_purpose,
+            payment_amount: payment_amount,
+            payment_name: payment_name,
+            payment_phone: payment_phone,
+            payment_email: payment_email,
+            redirect_url: redirect_url
+        };
+
+        try {
+            const response = await axios.post(url, { init_payment: data }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const payment_link = response.data.response.payment_link;        
+                console.log(payment_link);
+
+            return res.render("main/syllabus", { payment_link });
+        } catch (error) {
+            console.error("Error initiating payment:", error);
+            return res.status(500).send("Error initiating payment");
+        }
+
+    } catch (e) {
+        console.error("Error finding user:", e);
+        return res.status(500).send("Error finding user");
+    }
+};

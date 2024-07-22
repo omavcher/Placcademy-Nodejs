@@ -28,7 +28,7 @@ router.get('/auth/google/callback',
     });
   
 
-router.get('/syllabus', homeController.syllabusPage);
+router.get('/syllabus',isLoggedIn, homeController.syllabusPage);
  
 router.post('/coupon', isLoggedIn,homeController.couponApply)
 
