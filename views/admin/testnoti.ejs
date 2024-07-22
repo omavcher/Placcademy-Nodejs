@@ -10,7 +10,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            transition: background-color 0.3s;
             color: #333;
         }
         .container {
@@ -25,7 +25,25 @@
         .header h1 {
             font-size: 2em;
             color: #FB4B04;
-            margin-bottom: 6rem;
+            margin-bottom: 1rem;
+        }
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .filter-buttons button {
+            background-color: #FB4B04;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .filter-buttons button.active {
+            background-color: #e94e0f;
         }
         .card {
             background: #ffffff;
@@ -119,16 +137,22 @@
         }
     </style>
 </head>
-<body>
+<body id="body">
     <div class="container">
         <div class="header">
             <h1>All Students</h1>
         </div>
 
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button id="testallow" class="active">Test Allow Used</button>
+            <button id="testnotallow">Test Allow Not Used</button>
+        </div>
+
         <!-- Students Section -->
         <div id="students">
             <% students.forEach(student => { %>
-                <div class="card">
+                <div class="card" data-testallow="<%= student.internship.testallow %>">
                     <img src="<%= student.profile_dp %>" alt="<%= student.username %>">
                     <div class="card-content">
                         <h2><%= student.username %></h2>
@@ -162,11 +186,56 @@
                             </div>
                         </div>
 
+                        <!-- Display testallow value -->
+                        <p>Test Allow: <%= student.internship.testallow %></p>
+
                         <a href="/allow-test/<%= student._id %>" class="allow-test-btn">Allow Test</a>
                     </div>
                 </div>
             <% }); %>
         </div>
     </div>
+
+    <script>
+        // Get the filter buttons and student cards
+        const testAllowBtn = document.getElementById('testallow');
+        const testNotAllowBtn = document.getElementById('testnotallow');
+        const cards = document.querySelectorAll('.card');
+        const body = document.getElementById('body');
+
+        // Show cards based on testallow status
+        function filterCards(status) {
+            cards.forEach(card => {
+                if (card.getAttribute('data-testallow') === status.toString()) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Change body background color based on filter
+            if (status === 'true') {
+                body.style.backgroundColor = '#d0f0c0'; // Light green for test allowed
+            } else {
+                body.style.backgroundColor = '#f0d0d0'; // Light red for test not allowed
+            }
+        }
+
+        // Default view: Show testallow false students
+        filterCards('false');
+
+        // Add event listeners to buttons
+        testAllowBtn.addEventListener('click', () => {
+            testAllowBtn.classList.add('active');
+            testNotAllowBtn.classList.remove('active');
+            filterCards('true');
+        });
+
+        testNotAllowBtn.addEventListener('click', () => {
+            testAllowBtn.classList.remove('active');
+            testNotAllowBtn.classList.add('active');
+            filterCards('false');
+        });
+    </script>
 </body>
 </html>

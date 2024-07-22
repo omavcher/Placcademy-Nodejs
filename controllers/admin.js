@@ -342,16 +342,16 @@ module.exports.NotificationSendr = async (req, res) => {
 
 module.exports.TestAllow = async (req, res) => {
     try {
-        // Get search query from request
-        const searchQuery = req.query.search || '';
+        // Fetch all students from the database
+        const students = await User.find({});
 
-        // Fetch students from the database, optionally filtering by email
-        const students = await User.find({
-            email: { $regex: searchQuery, $options: 'i' } // Case-insensitive search
+        // Log the `testallow` property for each student
+        students.forEach(student => {
+            console.log(student.internship.testallow);
         });
 
-        // Render the view with searchQuery
-        res.render('admin/testnoti', { students, searchQuery });
+        // Render the template with students data
+        res.render('admin/testnoti', { students });
     } catch (error) {
         // Handle error and redirect with a flash message
         req.flash("error", "An error occurred while fetching student data.");
