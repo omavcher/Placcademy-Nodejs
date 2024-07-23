@@ -30,6 +30,9 @@ module.exports.dashboard = async (req, res) => {
     const InternshipCount = await Internship.countDocuments({});   
 
 
+    const StudentData = await User User.find({});
+
+
     res.render("admin/dashbord" , {studentCount , InternshipCount});
     } catch (error) {
         req.flash("error", error);
@@ -383,3 +386,7 @@ module.exports.testAllowedUser = async (req, res) => {
 };
 
 
+module.exports.testDataPage = async (req, res) => {
+    res.render('admin/testDataPage');
+    
+}

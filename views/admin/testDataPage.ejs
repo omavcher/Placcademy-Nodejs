@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fafafa;
+            transition: background-color 0.3s ease;
+        }
+        .question-block:hover {
+            background-color: #e0e0e0;
+        }
+        label {
+            display: block;
+            margin: 8px 0 4px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .submit-btn {
+            background-color: #28a745;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .question-number {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Page for Adding Questions</h1>
+        <form action="/admin/testdata" method="post">
+            <div id="questions-container">
+                <!-- Repeat this block for each question -->
+                <div class="question-block" id="question-block-0">
+                    <span class="question-number">Question 1:</span>
+                    <label>Question:</label>
+                    <input type="text" name="questions[0][question]" required>
+                    <br>
+                    <label>Option A:</label>
+                    <input type="text" name="questions[0][options][A]" required>
+                    <br>
+                    <label>Option B:</label>
+                    <input type="text" name="questions[0][options][B]" required>
+                    <br>
+                    <label>Option C:</label>
+                    <input type="text" name="questions[0][options][C]" required>
+                    <br>
+                    <label>Option D:</label>
+                    <input type="text" name="questions[0][options][D]" required>
+                    <br>
+                    <label>Answer:</label>
+                    <input type="text" name="questions[0][answer]" required>
+                    <br><br>
+                </div>
+                <!-- End of question block -->
+            </div>
+            <button type="button" onclick="addQuestion()">Add More Questions</button>
+            <br><br>
+            <input type="submit" class="submit-btn" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        let questionCount = 1;
+
+        function addQuestion() {
+            const container = document.getElementById('questions-container');
+            const questionBlock = document.createElement('div');
+            questionBlock.classList.add('question-block');
+            questionBlock.id = `question-block-${questionCount}`;
+            questionBlock.innerHTML = `
+                <span class="question-number">Question ${questionCount + 1}:</span>
+                <label>Question:</label>
+                <input type="text" name="questions[${questionCount}][question]" required>
+                <br>
+                <label>Option A:</label>
+                <input type="text" name="questions[${questionCount}][options][A]" required>
+                <br>
+                <label>Option B:</label>
+                <input type="text" name="questions[${questionCount}][options][B]" required>
+                <br>
+                <label>Option C:</label>
+                <input type="text" name="questions[${questionCount}][options][C]" required>
+                <br>
+                <label>Option D:</label>
+                <input type="text" name="questions[${questionCount}][options][D]" required>
+                <br>
+                <label>Answer:</label>
+                <input type="text" name="questions[${questionCount}][answer]" required>
+                <br><br>
+            `;
+            container.appendChild(questionBlock);
+            questionCount++;
+        }
+    </script>
+</body>
+</html>
