@@ -38,5 +38,6 @@ router.post('/allnoti',isAdmin,adminController.NotificationSendr)
 
 router.get('/testallow',isAdmin,adminController.TestAllow);
 
+router.get('/allow-test/:id',isAdmin, adminController.testAllowedUser);
 
 module.exports = router;

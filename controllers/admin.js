@@ -342,15 +342,9 @@ module.exports.NotificationSendr = async (req, res) => {
 
 module.exports.TestAllow = async (req, res) => {
     try {
-        // Fetch all students from the database
         const students = await User.find({});
 
-        // Log the `testallow` property for each student
-        students.forEach(student => {
-            console.log(student.internship.testallow);
-        });
-
-        // Render the template with students data
+       
         res.render('admin/testnoti', { students });
     } catch (error) {
         // Handle error and redirect with a flash message
@@ -358,4 +352,34 @@ module.exports.TestAllow = async (req, res) => {
         res.redirect("/admin/dashboard");
     }
 }
+
+module.exports.testAllowedUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        console.log(id);
+
+        const student = await User.findById(id);
+        
+        if (student) {
+            const currentTestAllowStatus = student.internship.testallow;
+            const newTestAllowStatus = !currentTestAllowStatus;
+
+            await User.updateOne(
+                { _id: id },
+                { $set: { "internship.testallow": newTestAllowStatus } }
+            );
+
+            req.flash('success', `${student.username} is now ${newTestAllowStatus ? 'allowed' : 'not allowed'} to test`);
+        } else {
+            req.flash('error', 'Student not found');
+        }
+
+        res.redirect('/admin/dashboard');
+    } catch (error) {
+        console.error('Error updating student data:', error);
+        req.flash('error', 'An error occurred while updating student data.');
+        res.redirect('/admin/dashboard');
+    }
+};
+
 

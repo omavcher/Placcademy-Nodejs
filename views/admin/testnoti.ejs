@@ -145,8 +145,8 @@
 
         <!-- Filter Buttons -->
         <div class="filter-buttons">
-            <button id="testallow" class="active">Test Allow Used</button>
-            <button id="testnotallow">Test Allow Not Used</button>
+            <button id="testallow" class="active">Test Allow User</button>
+            <button id="testnotallow">Test Allow Not User</button>
         </div>
 
         <!-- Students Section -->
@@ -189,7 +189,7 @@
                         <!-- Display testallow value -->
                         <p>Test Allow: <%= student.internship.testallow %></p>
 
-                        <a href="/allow-test/<%= student._id %>" class="allow-test-btn">Allow Test</a>
+                        <a href="/admin/allow-test/<%= student._id %>" class="allow-test-btn">Allow Test</a>
                     </div>
                 </div>
             <% }); %>
