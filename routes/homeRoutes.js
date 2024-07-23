@@ -32,6 +32,10 @@ router.get('/syllabus',isLoggedIn, homeController.syllabusPage);
  
 router.post('/coupon', isLoggedIn,homeController.couponApply)
 
-router.get('/test',isLoggedIn, homeController.TestPage);
+router.get('/test',isLoggedIn, );
+
+
+router.get('/paymentdone', isLoggedIn,homeController.TestPage);
+
 
 module.exports = router;

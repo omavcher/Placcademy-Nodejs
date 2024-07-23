@@ -9,5 +9,5 @@ router.get("/",(internshipController.intershipspage))
 
 router.get("/internship/:id", isLoggedIn, internshipController.internshipDetailedPage);
 
-
+router.get("/test", isLoggedIn, internshipController.internshipTest);
 module.exports = router;

@@ -132,7 +132,7 @@ module.exports.syllabusPage = async (req, res) => {
         const payment_name = registeredUser.username;
         const payment_phone = registeredUser.number;
         const payment_email = registeredUser.email;
-        const redirect_url = `http://localhost:8080/test?i=${payment_id}`;
+        const redirect_url = process.env.UIP_REDIRECT_URL;
 
         const initData = {
             account_id: account_id,
@@ -195,15 +195,21 @@ module.exports.TestPage = async (req, res) => {
 
         console.log('Payment Status Response:', statusResponse.data); // Debug log
 
-        const paymentStatus = statusResponse.data;
-        const paymentMessage = statusResponse.data.response;
+        const paymentData = statusResponse.data.data[0];
+        const paymentStatus = paymentData.payment_status;
 
-  
-        return res.send({
-            status: paymentStatus,
-            message: paymentMessage
-        });
-
+        if (paymentStatus === 'Success') {
+            // Payment was successful, render the test page
+            return res.render("main/testPage");
+        } else if (paymentStatus === 'Pending') {
+            // Payment is still pending, inform the user to wait
+            req.flash("success", "You have been registered for the test. Access link will be sent to you in a few hours, in the profile section.");
+            return res.redirect('/');
+        } else {
+            // Payment was not successful, show an error message
+            req.flash("error", "Payment not completed. Please try again.");
+            return res.redirect('/syllabus');
+        }
     } catch (error) {
         console.error("Error fetching payment status:", error);
         return res.status(500).send("Error fetching payment status");

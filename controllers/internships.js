@@ -29,3 +29,6 @@ module.exports.internshipDetailedPage = async (req, res) => {
     }
 };
 
+module.exports.internshipTest = (req , res) => {
+    res.render("main/test")
+}
