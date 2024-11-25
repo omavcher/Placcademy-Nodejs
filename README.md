@@ -48,20 +48,11 @@ _Add screenshots or GIFs of your app's interface here!_
 ### Install Dependencies  
 ```npm install```
 
-## ⚙️ Technologies Used  
 
-**SESSION_SECRET=**
-**PORT =**
-**MONGO_LINK=**
-**NODE_ENV=production**
-**GOOGLE_CLIENT_ID=**
-**GOOGLE_CLIENT_SECRET=**
-**CLOUDINARY_CLOUD_NAME=**
-**CLOUDINARY_CLOUD_API_KEY=**
-**CLOUDINARY_CLOUD_API_SECRET=**
-**CASHFREE_APP_ID=**
-**CASHFREE_SECRET_KEY=
-ADMIN_EMAIL=
+### Setup Environment Variables  
+Add the following keys to your `.env` file:  
+```plaintext
+SESSION_SECRET=your-secret-key PORT=8080 MONGO_LINK=mongodb://127.0.0.1:27017/Placcademy NODE_ENV=production GOOGLE_CLIENT_ID=your-google-client-id GOOGLE_CLIENT_SECRET=your-google-client-secret CLOUDINARY_CLOUD_NAME=your-cloudinary-name CLOUDINARY_CLOUD_API_KEY=your-cloudinary-api-key CLOUDINARY_CLOUD_API_SECRET=your-cloudinary-api-secret CASHFREE_APP_ID=your-cashfree-app-id CASHFREE_SECRET_KEY=your-cashfree-secret-key ADMIN_EMAIL=your-email@example.com
 
 ## ✅ Start the Application
 ```npm start```
