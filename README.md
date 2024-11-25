@@ -48,3 +48,5 @@ _Add screenshots or GIFs of your app's interface here!_
 ### Install Dependencies  
 ```bash
 npm install
+
+--------
