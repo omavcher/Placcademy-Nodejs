@@ -46,7 +46,7 @@ _Add screenshots or GIFs of your app's interface here!_
 ## 🔧 Installation & Usage  
 
 ### Install Dependencies  
-``` `npm install` ```
+``` `npm install` 
 
 ## ⚙️ Technologies Used  
 
