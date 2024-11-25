@@ -60,8 +60,8 @@ _Add screenshots or GIFs of your app's interface here!_
 **CLOUDINARY_CLOUD_API_KEY=**
 **CLOUDINARY_CLOUD_API_SECRET=**
 **CASHFREE_APP_ID=**
-**CASHFREE_SECRET_KEY=**
-**ADMIN_EMAIL=**
+**CASHFREE_SECRET_KEY=
+ADMIN_EMAIL=
 
 ## ✅ Start the Application
 ```npm start```
