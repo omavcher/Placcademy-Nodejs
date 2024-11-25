@@ -46,7 +46,7 @@ _Add screenshots or GIFs of your app's interface here!_
 ## 🔧 Installation & Usage  
 
 ### Install Dependencies  
-`` `npm install` ``
+```npm install```
 
 ## ⚙️ Technologies Used  
 
@@ -64,8 +64,8 @@ CASHFREE_SECRET_KEY=
 ADMIN_EMAIL=
 
 ## ✅ Start the Application
-`` `npm start` ``
+```npm start```
 
 
-ADMIN_PASS=
+
 
