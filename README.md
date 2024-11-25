@@ -38,8 +38,13 @@
 ---
 
 ## 📸 Preview  
-![Placcademy Screenshot](https://via.placeholder.com/800x400.png?text=Add+Your+Screenshot+Here)  
-_Add screenshots or GIFs of your app's interface here!_  
+![Screenshot 2024-11-25 141356](https://github.com/user-attachments/assets/5da55b02-189d-4931-b836-11f13b6ef0b8)
+![Screenshot 2024-11-25 144151](https://github.com/user-attachments/assets/55484e88-76fe-4c39-98d2-cbe075dbe9df)
+![Screenshot 2024-07-15 131740](https://github.com/user-attachments/assets/a236fe72-ba6c-4aec-8470-be2a23b2ed87)
+![Screenshot 2024-07-13 201510](https://github.com/user-attachments/assets/abd40632-07af-4ae2-9c27-aa76cd7aca90)
+![Screenshot 2024-07-17 064552](https://github.com/user-attachments/assets/c3639453-d291-45ea-9a7c-14a5eb904e2a)
+![Screenshot 2024-07-13 201510](https://github.com/user-attachments/assets/1900c727-99d7-43bf-9fa0-c4f15bea8a06)
+
 
 ---
 
@@ -65,7 +70,3 @@ CASHFREE_APP_ID=
 CASHFREE_SECRET_KEY=
 ADMIN_EMAIL=
 ADMIN_PASS=
-
-
-
-
