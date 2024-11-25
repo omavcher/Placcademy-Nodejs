@@ -46,7 +46,26 @@ _Add screenshots or GIFs of your app's interface here!_
 ## 🔧 Installation & Usage  
 
 ### Install Dependencies  
-```bash
-npm install
+``` `npm install` ```
 
---------
+## ⚙️ Technologies Used  
+
+SESSION_SECRET=
+PORT =
+MONGO_LINK=
+NODE_ENV=production
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_CLOUD_API_KEY=
+CLOUDINARY_CLOUD_API_SECRET=
+CASHFREE_APP_ID=
+CASHFREE_SECRET_KEY=
+ADMIN_EMAIL=
+
+## ✅ Start the Application
+``` `npm start` ```
+
+
+ADMIN_PASS=
+
